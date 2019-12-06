@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import { getProjects, getPalettes } from '../../apiCalls';
+import * as actions from '../../actions/index';
+import { connect } from 'react-redux';
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      projects: [],
-      palettes: [],
-      colors: []
-    }
-  }
+ 
   componentDidMount = async () => {
     const projects = await getProjects();
-    console.log(projects);
+    this.props.setProjects(projects);
     const palettes = await getPalettes();
-    console.log(palettes);
-    this.setState({ projects, palettes });
+    this.props.setPalettes(palettes);
   }
 
   render() {
@@ -26,4 +20,14 @@ export class App extends Component {
   }
 }
 
-export default App;
+export const mapState = (state) => ({
+  projects: state.projects,
+  palettes: state.palettes,
+});
+
+export const mapDispatch = (dispatch) => ({
+  setProjects: (projects) => dispatch(actions.addProjects(projects)),
+  setPalettes: (palettes) => dispatch(actions.addPalettes(palettes)),
+});
+
+export default connect(mapState, mapDispatch)(App);
