@@ -5,6 +5,7 @@ import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
 import PaletteContainer from '../PaletteContainer/PaletteContainer';
 import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
+import ProjectContainer from '../ProjectContainer/ProjectContainer';
 
 export class App extends Component {
   constructor() {
@@ -60,6 +61,9 @@ export class App extends Component {
         <button onClick={this.generatePalette}>Generate Palette</button>
         <PaletteContainer />
         <SavePaletteForm savePalette={api.postPalette}/>
+        <section className='user-projects'>
+          <ProjectContainer />
+        </section>
       </main>
     );
   }
