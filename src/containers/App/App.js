@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getProjects, getPalettes } from '../../apiCalls';
+import * as api from '../../apiCalls';
 import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
 import PaletteContainer from '../PaletteContainer/PaletteContainer';
+import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
 
 export class App extends Component {
   constructor() {
@@ -21,8 +22,8 @@ export class App extends Component {
   }
  
   componentDidMount = async () => {
-    const projects = await getProjects();
-    const palettes = await getPalettes();
+    const projects = await api.getProjects();
+    const palettes = await api.getPalettes();
     this.props.setProjects(projects);
     this.props.setPalettes(palettes);
     this.setState({ isLoading: false });
@@ -57,7 +58,8 @@ export class App extends Component {
         {this.state.isLoading && <h1>Loading...</h1>}
         <h1>Hello</h1>
         <button onClick={this.generatePalette}>Generate Palette</button>
-        {this.props.tempPalette && <PaletteContainer />}
+        <PaletteContainer />
+        <SavePaletteForm savePalette={api.postPalette}/>
       </main>
     );
   }
