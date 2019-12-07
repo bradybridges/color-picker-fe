@@ -3,6 +3,7 @@ import './App.css';
 import { getProjects, getPalettes } from '../../apiCalls';
 import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
+import PaletteContainer from '../PaletteContainer/PaletteContainer';
 
 export class App extends Component {
   constructor() {
@@ -56,6 +57,7 @@ export class App extends Component {
         {this.state.isLoading && <h1>Loading...</h1>}
         <h1>Hello</h1>
         <button onClick={this.generatePalette}>Generate Palette</button>
+        {this.props.tempPalette && <PaletteContainer />}
       </main>
     );
   }

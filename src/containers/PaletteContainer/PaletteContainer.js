@@ -1,0 +1,26 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PaletteColorItem from '../PaletteColorItem/PaletteColorItem';
+
+export class PaletteContainer extends Component {
+  renderColorItems = () => {
+    const { tempPalette } = this.props;
+    return tempPalette.map((color) => {
+      return <PaletteColorItem color={color.color} isLocked={color.isLocked} />
+    });
+  }
+
+  render() {
+    return (
+      <section>
+        {this.renderColorItems()}
+      </section>
+    );
+  }
+}
+
+export const mapState = (state) => ({
+  tempPalette: state.tempPalette,
+});
+
+export default connect(mapState)(PaletteContainer);
