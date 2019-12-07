@@ -7,3 +7,8 @@ export const addPalettes = (palettes) => ({
   type: 'ADD_PALETTES',
   palettes,
 });
+
+export const setTempPalette = (palette) => ({
+  type: 'SET_TEMP_PALETTE',
+  palette,
+});

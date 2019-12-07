@@ -10,7 +10,7 @@ export class App extends Component {
     this.state = {
       isLoading: true,
       tempColors: [
-        {name: 'color_1', color: '#000000', isLocked: true },
+        {name: 'color_1', color: '#000000', isLocked: false },
         {name: 'color_2', color: '#000000', isLocked: false },
         {name: 'color_3', color: '#000000', isLocked: false },
         {name: 'color_4', color: '#000000', isLocked: false },
@@ -28,13 +28,13 @@ export class App extends Component {
   }
 
   generatePalette = () => {
-    this.state.tempColors.forEach((color, i) => {
+    this.props.tempPalette.forEach((color, i) => {
       if(!color.isLocked) {
         const randomColor = this.generateColor();
-        //this is so we don't modify state directly but use setState
-        let updatedPalette = this.state.tempColors.map((color) => color);
+        //this is so we don't modify store directly but call actions to handle this
+        let updatedPalette = this.props.tempPalette.map((color) => color);
         updatedPalette[i].color = randomColor;
-        this.setState({ tempColors: updatedPalette });
+        this.props.setTempPalette(updatedPalette);
       }
     });
   }
@@ -64,11 +64,13 @@ export class App extends Component {
 export const mapState = (state) => ({
   projects: state.projects,
   palettes: state.palettes,
+  tempPalette: state.tempPalette,
 });
 
 export const mapDispatch = (dispatch) => ({
   setProjects: (projects) => dispatch(actions.addProjects(projects)),
   setPalettes: (palettes) => dispatch(actions.addPalettes(palettes)),
+  setTempPalette: (palette) => dispatch(actions.setTempPalette(palette)),
 });
 
 export default connect(mapState, mapDispatch)(App);
