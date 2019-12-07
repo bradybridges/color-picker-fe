@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setTempPalette } from '../../actions/index';
+import './PaletteColorItem.css'
 
 const lockedImg = require('../../images/lock.svg');
 const unlockedImg = require('../../images/unlocked-padlock.svg');
