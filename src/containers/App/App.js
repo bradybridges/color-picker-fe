@@ -54,9 +54,9 @@ export class App extends Component {
 
   render() {
     return (
-      <main>
+      <main className='main-content'>
         {this.state.isLoading && <h1>Loading...</h1>}
-        <h1>Hello</h1>
+        <h1 className='main-header'>Hello</h1>
         <button onClick={this.generatePalette}>Generate Palette</button>
         <PaletteContainer />
         <SavePaletteForm savePalette={api.postPalette}/>

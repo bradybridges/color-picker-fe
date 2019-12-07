@@ -12,7 +12,7 @@ export class PaletteContainer extends Component {
 
   render() {
     return (
-      <section>
+      <section className='palette-container'>
         {this.renderColorItems()}
       </section>
     );
