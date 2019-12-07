@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .travis.yml
+.eslintrc.json
 
 # testing
 /coverage
