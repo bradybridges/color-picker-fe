@@ -5,8 +5,8 @@ import PaletteColorItem from '../PaletteColorItem/PaletteColorItem';
 export class PaletteContainer extends Component {
   renderColorItems = () => {
     const { tempPalette } = this.props;
-    return tempPalette.map((color) => {
-      return <PaletteColorItem color={color.color} isLocked={color.isLocked} />
+    return tempPalette.map((color, i) => {
+      return <PaletteColorItem key={`${color}${i}`} color={color.color} isLocked={color.isLocked} />
     });
   }
 
