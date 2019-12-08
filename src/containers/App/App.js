@@ -58,7 +58,9 @@ export class App extends Component {
       <main className='main-content'>
         {this.state.isLoading && <h1>Loading...</h1>}
         <h1 className='main-header'>Color Coordinated</h1>
-        <button onClick={this.generatePalette}>Generate Palette</button>
+        <div className='button-container'>
+          <button onClick={this.generatePalette} className='generate-btn'>Generate</button>
+        </div>
         <PaletteContainer />
         <SavePaletteForm savePalette={api.postPalette}/>
         <section className='user-projects'>

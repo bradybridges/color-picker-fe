@@ -1,0 +1,33 @@
+.palette-form {
+  text-align: center;
+}
+
+.palette-title-input {
+  width: 20%;
+  background: black;
+  color: white;
+  height: 30px;
+  border-radius: 3px 3px 3px 3px;
+  border-color: #2d9fcc;
+}
+
+.palette-save-btn {
+  margin: 0 auto;
+  background: black;
+  color: #2d9fcc;
+  font-size: 1em;
+  border-radius: 3px 3px 3px 3px;
+  font-family: 'Permanent Marker';
+  border: 1px solid grey;
+  width: 20%;
+  height: 35px;
+  border-color: #2d9fcc;
+}
+
+select {
+  width: 20%;
+  background: black;
+  color: white;
+  height: 37px;
+  border-color: #2d9fcc;
+}
