@@ -17,3 +17,8 @@ export const setTempPalette = (palette) => ({
   type: 'SET_TEMP_PALETTE',
   palette,
 });
+
+export const addNewProject = (project) => ({
+  type: 'ADD_NEW_PROJECT',
+  project
+});
