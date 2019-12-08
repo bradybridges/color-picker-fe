@@ -19,6 +19,7 @@ export class SavePaletteForm extends Component {
     e.preventDefault();
     const { tempPalette } = this.props;
     const projectId = Number(e.target.querySelector('option').value);
+    console.log('projectId in SavePaletteForm', projectId)
     const paletteName = e.target.querySelector('input').value;
     const color1 = tempPalette[0].color;
     const color2 = tempPalette[1].color;

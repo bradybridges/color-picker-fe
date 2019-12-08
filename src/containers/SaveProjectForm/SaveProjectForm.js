@@ -27,6 +27,11 @@ export class SaveProjectForm extends Component {
     const id = await response.id
     console.log('id', id)
     addNewProject(name)
+    this.clearInput()
+  }
+
+  clearInput = () => {
+    this.setState({name: ''})
   }
 
 
