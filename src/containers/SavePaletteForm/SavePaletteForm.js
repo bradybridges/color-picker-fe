@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addPalette } from '../../actions/index';
+import './SavePaletteForm.css'
 
 export class SavePaletteForm extends Component {
   renderProjectOptions = () => {
@@ -41,11 +42,13 @@ export class SavePaletteForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div className='form-container'>
+      <form className='palette-form' onSubmit={this.handleSubmit}>
         {this.renderProjectOptions()}
-        <input placeholder="Enter Palette Name"/>
-        <button>Save Palette</button>
+        <input className='palette-title-input' placeholder="Enter Palette Name"/>
+        <button className='palette-save-btn'>Save Palette</button>
       </form>
+      </div>
     );
   }
 }

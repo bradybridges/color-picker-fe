@@ -1,0 +1,10 @@
+.project-card {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* .project-name {
+  color: white;
+} */

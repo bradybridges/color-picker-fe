@@ -16,8 +16,8 @@ export const getPalettes = async () => {
   return palettes;
 };
 
-export const getProject = async (name) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${name}`);
+export const getProject = async (id) => {
+  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`);
   if(!response.ok) {
     return Error('Failed to fetch pallete');
   }
@@ -25,8 +25,8 @@ export const getProject = async (name) => {
   return palette;
 };
 
-export const getPalette = async (paletteName) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/palettes/${paletteName}`);
+export const getPalette = async (paletteId) => {
+  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/palettes/${paletteId}`);
   if (!response.ok) {
     return Error('Failed to fetch palette');
   }
