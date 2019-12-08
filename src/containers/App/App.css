@@ -28,12 +28,15 @@
 }
 
 .main-header {
-  color: white;
+  color: #2d9fcc;
+  font-family: 'Rock Salt', cursive;
+  /* font-family: 'Permanent Marker', cursive; */
+  font-size: 3em;
 }
 
 .user-projects {
   display: grid;
   grid-gap: 20px 15px;
   grid-template-columns: repeat(auto-fit, minmax(120px, 0.3fr));
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
