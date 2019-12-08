@@ -28,7 +28,8 @@
 }
 
 .user-projects {
-  display: grid;
-  grid-gap: 20px 15px;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 0.3fr));
+  display: flex;
+  flex-direction: column;
+  /* grid-gap: 20px 15px; */
+  /* grid-template-columns: repeat(auto-fit, minmax(120px, 0.3fr)); */
 }
