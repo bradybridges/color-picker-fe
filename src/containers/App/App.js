@@ -5,6 +5,7 @@ import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
 import PaletteContainer from '../PaletteContainer/PaletteContainer';
 import SavePaletteForm from '../SavePaletteForm/SavePaletteForm';
+import ProjectContainer from '../ProjectContainer/ProjectContainer';
 
 export class App extends Component {
   constructor() {
@@ -54,12 +55,17 @@ export class App extends Component {
 
   render() {
     return (
-      <main>
+      <main className='main-content'>
         {this.state.isLoading && <h1>Loading...</h1>}
-        <h1>Hello</h1>
-        <button onClick={this.generatePalette}>Generate Palette</button>
+        <h1 className='main-header'>Color Coordinated</h1>
+        <div className='button-container'>
+          <button onClick={this.generatePalette} className='generate-btn'>Generate</button>
+        </div>
         <PaletteContainer />
         <SavePaletteForm savePalette={api.postPalette}/>
+        <section className='user-projects'>
+          <ProjectContainer />
+        </section>
       </main>
     );
   }
