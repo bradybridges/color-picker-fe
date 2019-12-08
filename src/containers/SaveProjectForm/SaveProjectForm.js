@@ -25,8 +25,12 @@ export class SaveProjectForm extends Component {
     const { addNewProject } = this.props
     const response = await this.props.postProject(name)
     const id = await response.id
+    const newProject = {
+      name: name,
+      id: id
+    }
     console.log('id', id)
-    addNewProject(name)
+    addNewProject(newProject)
     this.clearInput()
   }
 
