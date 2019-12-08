@@ -1,3 +1,28 @@
 .palette {
-  background-color: white;
+  /* background-color: white; */
+  padding: 2px;
+  width: 90%;
+  justify-content: center;
+  border: 1px solid white;
+  margin: 4px;
+}
+
+.palette-name {
+  margin: 5px;
+}
+
+.palette-color-container {
+  display: flex;
+  height: 30px;
+  justify-content: center;
+}
+
+.color1,
+.color2,
+.color3,
+.color4,
+.color5 {
+  height: 100%;
+  width: 20%;
+  margin: 1px;
 }

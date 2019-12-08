@@ -1,6 +1,8 @@
 .project-card {
-  /* width: 50%; */
-  background-color: white;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 /* .project-name {
