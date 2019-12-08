@@ -2,9 +2,8 @@
   color: white;
   display: flex;
   flex-direction: column;
+  height: 250px;
+  overflow: scroll;
   width: 100%;
 }
 
-/* .project-name {
-  color: white;
-} */
