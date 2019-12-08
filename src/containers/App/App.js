@@ -63,7 +63,7 @@ export class App extends Component {
           <button onClick={this.generatePalette} className='generate-btn'>Generate</button>
         </div>
         <PaletteContainer />
-        <SaveProjectForm saveProject={api.postProjet}/>
+        <SaveProjectForm postProject={api.postProject}/>
         <SavePaletteForm savePalette={api.postPalette}/>
         <section className='user-projects'>
           <ProjectContainer />
