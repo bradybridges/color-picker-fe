@@ -6,11 +6,8 @@ import Palette from '../Palette/Palette'
 
 export const ProjectCard = ({ name, id, palettes }) => {
   const findMatchingPalettes = palettes.filter(palette => {
-    // console.log('id', id)
-    // console.log('palette id', palette.project_id)
    return palette.project_id === id
   })
-  console.log('find matching', findMatchingPalettes)
   const displayPalettes = findMatchingPalettes.map((palette, index) => {
     return (
       <Palette

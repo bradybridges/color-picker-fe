@@ -7,8 +7,19 @@
   margin: 4px;
 }
 
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
 .palette-name {
   margin: 5px;
+}
+
+.delete-button { 
+  width: 32px;
+  height: 32px;
 }
 
 .palette-color-container {

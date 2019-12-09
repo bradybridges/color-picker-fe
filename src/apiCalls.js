@@ -72,7 +72,9 @@ export const postPalette = async (project_id, palette_name, color_1, color_2, co
 };
 
 export const deleteProject = async (id) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`);
+  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`, {
+    method: 'DELETE',
+  });
   if (!response.ok) {
     return Error('Failed to delete project');
   }
@@ -81,7 +83,9 @@ export const deleteProject = async (id) => {
 };
 
 export const deletePalette = async (id) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/palettes/${id}`);
+  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/palettes/${id}`, {
+    method: 'DELETE',
+  });
   if (!response.ok) {
     return Error('Failed to delete palette');
   }
