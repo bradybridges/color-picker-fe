@@ -20,5 +20,5 @@ export const setTempPalette = (palette) => ({
 
 export const addNewProject = (project) => ({
   type: 'ADD_NEW_PROJECT',
-  project
+  project,
 });
