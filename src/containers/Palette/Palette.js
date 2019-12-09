@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Palette.css'
 import { connect } from 'react-redux';
-import { addPalettes } from '../../actions/index';
+import { addPalettes, setTempPalette } from '../../actions/index';
 import { deletePalette } from '../../apiCalls';
 const deleteButton = require('../../images/delete.svg');
 export class Palette extends Component {
@@ -13,10 +13,22 @@ export class Palette extends Component {
     console.log(response);
   }
 
+  loadPalette = () => {
+    const { color_1, color_2, color_3, color_4, color_5 } = this.props;
+    const tempPalette = [
+      { name: "color_1", color: color_1, isLocked: false, },
+      { name: "color_2", color: color_2, isLocked: false, },
+      { name: "color_3", color: color_3, isLocked: false, },
+      { name: "color_4", color: color_4, isLocked: false, },
+      { name: "color_5", color: color_5, isLocked: false, },
+    ];
+    this.props.setTempPalette(tempPalette);
+  }
+
   render() {
     const { palette_name, color_1, color_2, color_3, color_4, color_5 } = this.props;
     return (
-      <section className='palette'>
+      <section className='palette' onClick={this.loadPalette}>
         <div className='title-container'>
           <h6 className='palette-name'>{palette_name}</h6>
           <img 
@@ -44,6 +56,7 @@ export const mapState = (state) => ({
 
 export const mapDispatch = (dispatch) => ({
   updatePalettes: (palettes) => dispatch(addPalettes(palettes)),
+  setTempPalette: (palette) => dispatch(setTempPalette(palette)),
 });
 
 export default connect(mapState, mapDispatch)(Palette);
