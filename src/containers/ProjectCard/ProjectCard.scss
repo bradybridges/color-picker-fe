@@ -1,0 +1,46 @@
+.project-card {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  overflow: scroll;
+  width: 100%;
+}
+
+.delete-modal {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  background-color: #000;
+  border: solid #fff 1px;
+  border-radius: 4px;
+  width: 25%;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.project-button {
+  width: 35%;
+  height: 40px;
+  border: solid #2d9fcc 1px;
+  border-radius: 4px;
+  background-color: black;
+  color: #fff;
+  &:hover {
+    box-shadow: 3px -3px 6px 0px #2d9fcc;
+    cursor: pointer;
+  }
+}
+
+.delete-confirmation-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.project-title-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
