@@ -1,7 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import './ProjectContainer.css'
-import ProjectCard from '../ProjectCard/ProjectCard'
+import React from 'react';
+import { connect } from 'react-redux';
+import './ProjectContainer.css';
+import ProjectCard from '../ProjectCard/ProjectCard';
 
 
 export const ProjectContainer = ( { projects }) => {
@@ -11,20 +11,19 @@ export const ProjectContainer = ( { projects }) => {
         {...project}
         key={index}
         className='project'
-       />
-    )
-  })
+      />
+    );
+  });
 
   return (
     <section className='project-container'>
       {displayProjectCards}
     </section>
-  )
-
-}
+  );
+};
 
 export const mapState = (state) => ({
-  projects: state.projects
-})
+  projects: state.projects,
+});
 
-export default connect (mapState)(ProjectContainer)
+export default connect(mapState)(ProjectContainer);

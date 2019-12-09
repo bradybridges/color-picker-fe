@@ -13,7 +13,7 @@ export class PaletteColorItem extends Component {
     const colorToUpdate = updatedPalette.find((palItem) => {
       if(palItem.color === color && palItem.isLocked === isLocked) {
         return true;
-      }
+      } else { return false; }
     });
     colorToUpdate.isLocked = !colorToUpdate.isLocked;
     this.props.setTempPalette(updatedPalette);
