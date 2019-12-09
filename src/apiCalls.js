@@ -37,12 +37,14 @@ export const getPalette = async (paletteId) => {
 export const postProject = async (name) => {
   const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects`, {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name }),
   });
   if (!response.ok) {
     return Error('Failed to post new project');
   }
   const message = await response.json();
+  console.log('message', message)
   return message;
 };
 

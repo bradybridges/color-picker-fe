@@ -3,15 +3,17 @@
 }
 
 .palette-title-input {
-  width: 20%;
   background: black;
+  border-color: #2d9fcc;
+  border-radius: 3px 3px 3px 3px;
   color: white;
   height: 30px;
-  border-radius: 3px 3px 3px 3px;
-  border-color: #2d9fcc;
+  margin: 5px;
+  width: 20%;
 }
 
 .palette-save-btn {
+  display: block;
   margin: 0 auto;
   background: black;
   color: #2d9fcc;
@@ -25,9 +27,10 @@
 }
 
 select {
-  width: 20%;
   background: black;
+  border-color: #2d9fcc;
   color: white;
   height: 37px;
-  border-color: #2d9fcc;
+  margin: 5px;
+  width: 20%;
 }

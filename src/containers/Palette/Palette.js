@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import './Palette.css'
 
 export const Palette = ({ palette_name, color_1, color_2, color_3, color_4, color_5}) => {
-  // const style = { backgroundColor: color_1 }
 
   return (
     <section className='palette'>
