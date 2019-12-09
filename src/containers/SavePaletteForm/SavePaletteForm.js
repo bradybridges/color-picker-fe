@@ -7,13 +7,21 @@ export class SavePaletteForm extends Component {
   constructor() {
     super();
     this.state = {
-      selectedProject: null
+      selectedProject: "1",
+      paletteName: '',
     }
   }
 
-  handleChange = e => {
+  handleOptionChange = (e) => {
     this.setState({
-      selectedProject: [e.target.value]
+      selectedProject: e.target.value
+    })
+  }
+
+  handleInputChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      paletteName: e.target.value,
     })
   }
 
@@ -22,7 +30,7 @@ export class SavePaletteForm extends Component {
       return <option key={`${project.name}`} value={project.id}>{project.name}</option>
     });
     return (
-      <select onChange={this.handleChange}>
+      <select onChange={this.handleOptionChange}>
         {options}
       </select>
     );
@@ -33,7 +41,7 @@ export class SavePaletteForm extends Component {
     const { tempPalette } = this.props;
     const projectId = parseInt(this.state.selectedProject)
     console.log('projId', projectId)
-    const paletteName = e.target.querySelector('input').value;
+    const paletteName = this.state.paletteName;
     const color1 = tempPalette[0].color;
     const color2 = tempPalette[1].color;
     const color3 = tempPalette[2].color;
@@ -60,7 +68,12 @@ export class SavePaletteForm extends Component {
       <div className='form-container'>
       <form className='palette-form' onSubmit={this.handleSubmit}>
         {this.renderProjectOptions()}
-        <input className='palette-title-input' placeholder="Enter Palette Name"/>
+        <input 
+          className='palette-title-input' 
+          placeholder="Enter Palette Name" 
+          onChange={this.handleInputChange}
+          value={this.state.paletteName} 
+        />
         <button className='palette-save-btn'>Save Palette</button>
       </form>
       </div>
