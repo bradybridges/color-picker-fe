@@ -22,14 +22,12 @@
 .main-header {
   color: #2d9fcc;
   font-family: 'Rock Salt', cursive;
-  /* font-family: 'Permanent Marker', cursive; */
   font-size: 3em;
   margin: 10px 40px;
+  text-shadow: 4px 4px #d84b64;
 }
 
 .user-projects {
   display: flex;
   flex-direction: column;
-  /* grid-gap: 20px 15px; */
-  /* grid-template-columns: repeat(auto-fit, minmax(120px, 0.3fr)); */
 }
