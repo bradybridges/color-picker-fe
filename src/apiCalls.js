@@ -1,6 +1,6 @@
 export const getProjects = async () => {
   const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/projects');
-  if(!response.ok) {
+  if (!response.ok) {
     return Error('Failed to fetch projects');
   }
   const projects = await response.json();
@@ -9,7 +9,7 @@ export const getProjects = async () => {
 
 export const getPalettes = async () => {
   const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/palettes');
-  if(!response.ok) {
+  if (!response.ok) {
     return Error('Failed to fetch palettes');
   }
   const palettes = await response.json();
@@ -18,7 +18,7 @@ export const getPalettes = async () => {
 
 export const getProject = async (id) => {
   const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`);
-  if(!response.ok) {
+  if (!response.ok) {
     return Error('Failed to fetch pallete');
   }
   const palette = await response.json();
@@ -35,7 +35,7 @@ export const getPalette = async (paletteId) => {
 };
 
 export const postProject = async (name) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects`, {
+  const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/projects', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name }),
@@ -44,7 +44,6 @@ export const postProject = async (name) => {
     return Error('Failed to post new project');
   }
   const message = await response.json();
-  console.log('message', message)
   return message;
 };
 
