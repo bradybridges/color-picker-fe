@@ -15,5 +15,29 @@ exports[`ProjectCard ProjectCard component should match the snapshot 1`] = `
       Delete Project
     </button>
   </div>
+  <Connect(Palette)
+    className="palette-card"
+    color_1="#123456"
+    color_2="#123456"
+    color_3="#123456"
+    color_4="#123456"
+    color_5="#123456"
+    id={1}
+    key="10"
+    name="a palette"
+    project_id={1}
+  />
+  <Connect(Palette)
+    className="palette-card"
+    color_1="#AABBCC"
+    color_2="#AABBCC"
+    color_3="#AABBCC"
+    color_4="#AABBCC"
+    color_5="#AABBCC"
+    id={2}
+    key="21"
+    name="another palette"
+    project_id={1}
+  />
 </section>
 `;

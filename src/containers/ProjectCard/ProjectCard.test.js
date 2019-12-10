@@ -48,7 +48,8 @@ describe('ProjectCard', () => {
       const mockUpdatePalettes = jest.fn()
       wrapper = shallow(<ProjectCard 
         palettes={mockPalettes} 
-        projects={mockProjects} 
+        projects={mockProjects}
+        id={1} 
         updateProjects={mockUpdateProjects} 
         updatePalettes={mockUpdatePalettes} 
       />)
@@ -57,5 +58,44 @@ describe('ProjectCard', () => {
     it('should match the snapshot', () => {
       expect(wrapper).toMatchSnapshot()
     })
+
+    it('should update showDeleteModal to false in state when handleCancelDelete is invoked', () => {
+      // const expected = { showDeleteModal: false }
+
+      wrapper.instance().setState({ showDeleteModal: true})
+
+      wrapper.instance().handleCancelDelete()
+
+      expect(wrapper.state('showDeleteModal')).toEqual(false)
+    })
+
+    it('should update showDeleteModal to true in state when showModal is called', () => {
+      wrapper.instance().setState({ showDeleteModal: true })
+
+      wrapper.instance().showModal()
+
+      expect(wrapper.state('showDeleteModal')).toEqual(true)
+    })
+
+    it('should something something ', () => {
+      const mockEvent = { preventDefault() { } };
+    })
   })
 })
+
+
+
+
+// it('should update userInfo state when addUserInfo gets invoked', () => {
+//   // Setup
+//   const wrapper = shallow(<App />);
+//   const expected = [{ name: 'Darth Vader', quote: 'I am your father.', skillLevel: 'Expert' }];
+
+//   expect(wrapper.state('userInfo')).toEqual([]);
+
+//   // Execution
+//   wrapper.instance().addUserInfo(expected)
+
+//   // Expectation
+//   expect(wrapper.state('userInfo')).toEqual(expected);
+// });
