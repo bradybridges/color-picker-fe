@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaletteContainer should match snapshot 1`] = `
+<section
+  className="palette-container"
+>
+  <Connect(PaletteColorItem)
+    color="#FFFFFF"
+    isLocked={false}
+    key="[object Object]0"
+  />
+  <Connect(PaletteColorItem)
+    color="#000000"
+    isLocked={false}
+    key="[object Object]1"
+  />
+  <Connect(PaletteColorItem)
+    color="#CCCCCC"
+    isLocked={true}
+    key="[object Object]2"
+  />
+  <Connect(PaletteColorItem)
+    color="#1F1F1F"
+    isLocked={true}
+    key="[object Object]3"
+  />
+  <Connect(PaletteColorItem)
+    color="#1D1D1D"
+    isLocked={true}
+    key="[object Object]4"
+  />
+</section>
+`;
