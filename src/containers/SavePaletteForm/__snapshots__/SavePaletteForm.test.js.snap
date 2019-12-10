@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SavePaletteForm should match snapshot 1`] = `
+<div
+  className="form-container"
+>
+  <form
+    className="palette-form"
+    onSubmit={[Function]}
+  >
+    <select
+      onChange={[Function]}
+    >
+      <option
+        key="Great Project"
+        value={1}
+      >
+        Great Project
+      </option>
+      <option
+        key="Another Great Project"
+        value={2}
+      >
+        Another Great Project
+      </option>
+    </select>
+    <input
+      className="palette-title-input"
+      onChange={[Function]}
+      placeholder="Enter Palette Name"
+      value=""
+    />
+    <button
+      className="palette-save-btn"
+    >
+      Save Palette
+    </button>
+  </form>
+</div>
+`;
