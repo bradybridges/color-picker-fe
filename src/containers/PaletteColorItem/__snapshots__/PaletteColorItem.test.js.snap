@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaletteColorItem should match snapshot 1`] = `
+<section
+  className="color-container"
+  style={
+    Object {
+      "backgroundColor": "#CCCCCC",
+    }
+  }
+>
+  <div
+    className="color-container-contents"
+  >
+    <p
+      className="color-code"
+    >
+      #CCCCCC
+    </p>
+    <img
+      alt="lock or unlock color"
+      className="color-lock-img"
+      onClick={[Function]}
+      src={
+        Object {
+          "ReactComponent": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "__esModule": true,
+          "default": "lock.svg",
+        }
+      }
+    />
+  </div>
+</section>
+`;
