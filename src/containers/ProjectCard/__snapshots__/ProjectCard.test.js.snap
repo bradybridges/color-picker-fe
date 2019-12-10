@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectCard ProjectCard component should match the snapshot 1`] = `
+<section
+  className="project-card"
+>
+  <div>
+    <h4
+      className="project-name"
+    />
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Delete Project
+    </button>
+  </div>
+</section>
+`;

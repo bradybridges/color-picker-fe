@@ -80,8 +80,7 @@ export class ProjectCard extends Component {
 }
 
 export const mapState = (state) => ({
-  palettes: state.palettes,
-  projects: state.projects,
+  palettes: state.palettes
 });
 
 export const mapDispatch = (dispatch) => ({
