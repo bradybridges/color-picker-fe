@@ -34,11 +34,11 @@ export class PaletteColorItem extends Component {
   }
 }
 
-const mapState = (state) => ({
+export const mapState = (state) => ({
   tempPalette: state.tempPalette,
 });
 
-const mapDispatch = (dispatch) => ({
+export const mapDispatch = (dispatch) => ({
   setTempPalette: (palette) => dispatch(setTempPalette(palette)),
 });
 

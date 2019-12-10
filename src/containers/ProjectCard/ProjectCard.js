@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './ProjectCard.css';
+import './ProjectCard.scss';
 import Palette from '../Palette/Palette';
 import { deleteProject } from '../../apiCalls';
 import * as actions from '../../actions';
@@ -26,12 +26,13 @@ export class ProjectCard extends Component {
     })
   }
   renderDeleteModal = () => {
+    const { name } = this.props;
     return (
       <div className="delete-modal">
-        <h4>Are you sure?</h4>
+        <h4>Are you want to delete {name}?</h4>
         <div className="delete-confirmation-container">
-          <button type="button" onClick={this.handleDeleteProject}>Delete</button>
-          <button type="button" onClick={this.handleCancelDelete}>Cancel</button>
+          <button className="project-button" type="button" onClick={this.handleDeleteProject}>Delete</button>
+          <button className="project-button" type="button" onClick={this.handleCancelDelete}>Cancel</button>
         </div>
       </div>
     );
@@ -61,9 +62,15 @@ export class ProjectCard extends Component {
     const { name } = this.props;
     return (
       <section className='project-card'>
-        <div>
+        <div className="project-title-container">
           <h4 className='project-name'>{name}</h4>
-          <button type="button" onClick={this.showModal}>Delete Project</button>
+          <button
+            className="project-button"
+            type="button"
+            onClick={this.showModal}
+          >
+            Delete Project
+          </button>
         </div>
         {this.renderPalettes()}
         {this.state.showDeleteModal && this.renderDeleteModal()}

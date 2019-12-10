@@ -40,7 +40,6 @@ export class SavePaletteForm extends Component {
     e.preventDefault();
     const { tempPalette } = this.props;
     const projectId = parseInt(this.state.selectedProject)
-    console.log('projId', projectId)
     const paletteName = this.state.paletteName;
     const color1 = tempPalette[0].color;
     const color2 = tempPalette[1].color;
@@ -59,7 +58,6 @@ export class SavePaletteForm extends Component {
       color_4: color4,
       color_5: color5,
     }
-    console.log('new palette', newPalette)
     this.props.addPalette(newPalette);
   }
 
