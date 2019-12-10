@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import {ProjectCard, mapState, mapDispatch} from './ProjectCard'
 import { deleteProject } from '../../apiCalls'
-import { addProjects } from '../../actions'
+import { addProjects, addPalettes } from '../../actions'
 
 jest.mock('../../apiCalls')
 
@@ -228,35 +228,39 @@ describe('ProjectCard', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
+
+    it('calls dispatch with a palettes array when updatePalettes is called', () => {
+      const mockDispatch = jest.fn()
+
+      const actionToDispatch = addPalettes([
+        {
+          id: 1,
+          project_id: 1,
+          name: 'a palette',
+          color_1: '#FFFFFF',
+          color_2: '#FFFFFF',
+          color_3: '#FFFFFF',
+          color_4: '#FFFFFF',
+          color_5: '#FFFFFF',
+        }
+      ])
+
+      const mappedProps = mapDispatch(mockDispatch)
+
+      mappedProps.updatePalettes([
+        {
+          id: 1,
+          project_id: 1,
+          name: 'a palette',
+          color_1: '#FFFFFF',
+          color_2: '#FFFFFF',
+          color_3: '#FFFFFF',
+          color_4: '#FFFFFF',
+          color_5: '#FFFFFF',
+        }
+      ])
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
   })
 })
-
-
-
-// describe('mapDispatchToProps', () => {
-//   it('calls dispatch with a movies array when setMovies is called', () => {
-//     const mockDispatch = jest.fn()
-
-//     const actionToDispatch = setMovies([{title: 'a title'}, {title: 'another title'}])
-
-//     const mappedProps = mapDispatchToProps(mockDispatch)
-//     mappedProps.setMovies([{title: 'a title'}, {title: 'another title'}])
-
-//     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-//   })
-
-
-
-// it('should update userInfo state when addUserInfo gets invoked', () => {
-//   // Setup
-//   const wrapper = shallow(<App />);
-//   const expected = [{ name: 'Darth Vader', quote: 'I am your father.', skillLevel: 'Expert' }];
-
-//   expect(wrapper.state('userInfo')).toEqual([]);
-
-//   // Execution
-//   wrapper.instance().addUserInfo(expected)
-
-//   // Expectation
-//   expect(wrapper.state('userInfo')).toEqual(expected);
-// });
