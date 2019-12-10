@@ -1,14 +1,17 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import {ProjectCard, mapState, mapDispatch} from './ProjectCard'
-// import { deleteProject } from '../../../apiCalls'
+import { deleteProject } from '../../apiCalls'
 
-// jest.mock('../../../apiCalls')
+jest.mock('../../apiCalls')
 
 describe('ProjectCard', () => {
   describe('ProjectCard component', () => {
     let wrapper;
     beforeEach(() => {
+      deleteProject.mockImplementation(() => {
+        return Promise.resolve({message: 'Successfully deleted project'})
+      })
       const mockPalettes = [
           {
             id: 1,
@@ -77,8 +80,80 @@ describe('ProjectCard', () => {
       expect(wrapper.state('showDeleteModal')).toEqual(true)
     })
 
-    it('should something something ', () => {
-      const mockEvent = { preventDefault() { } };
+    it('call handleDeleteProject with the correct information', () => {
+      const mockEvent = { preventDefault: jest.fn() }
+      
+      wrapper.instance().updateProjects = jest.fn()
+      wrapper.instance().updatePalettes = jest.fn()
+
+      wrapper.instance().handleDeleteProject(mockEvent)
+
+      expect(deleteProject).toHaveBeenCalledWith(1);
+
+      expect(wrapper.instance().updateProjects).toHaveBeenCalledWith(1, [{"id": 1, "name": "a project"}, {"id": 2, "name": "another project"}])
+
+      expect(wrapper.instance().updatePalettes).toHaveBeenCalledWith(1, [
+        {
+          id: 1,
+          project_id: 1,
+          name: 'a palette',
+          color_1: '#123456',
+          color_2: '#123456',
+          color_3: '#123456',
+          color_4: '#123456',
+          color_5: '#123456',
+        }, 
+        {
+          id: 2,
+          project_id: 1,
+          name: 'another palette',
+          color_1: '#AABBCC',
+          color_2: '#AABBCC',
+          color_3: '#AABBCC',
+          color_4: '#AABBCC',
+          color_5: '#AABBCC',
+        }
+      ])
+      
+
+
+    })
+
+    it('should call updateProjects with the correct information', () => {
+      const result = wrapper.instance().updateProjects(1,[{"id": 1, "name": "a project"}, {"id": 2, "name": "another project"}])
+
+      expect(wrapper.instance().props.updateProjects).toHaveBeenCalledWith([{"id": 2, "name": "another project"}])
+
+
+    })
+
+    it('should call updatePalettes with the correct information', () => {
+      const result = wrapper.instance().updatePalettes(1,[
+        {
+          id: 1,
+          project_id: 1,
+          name: 'a palette',
+          color_1: '#123456',
+          color_2: '#123456',
+          color_3: '#123456',
+          color_4: '#123456',
+          color_5: '#123456',
+        }, 
+        {
+          id: 2,
+          project_id: 1,
+          name: 'another palette',
+          color_1: '#AABBCC',
+          color_2: '#AABBCC',
+          color_3: '#AABBCC',
+          color_4: '#AABBCC',
+          color_5: '#AABBCC',
+        }
+      ])
+
+      expect(wrapper.instance().props.updatePalettes).toHaveBeenCalledWith([])
+
+
     })
   })
 })
