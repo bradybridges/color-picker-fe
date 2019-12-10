@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import {ProjectCard, mapState, mapDispatch} from './ProjectCard'
 import { deleteProject } from '../../apiCalls'
+import { addProjects } from '../../actions'
 
 jest.mock('../../apiCalls')
 
@@ -156,8 +157,93 @@ describe('ProjectCard', () => {
 
     })
   })
+
+  describe('mapState', () => {
+    it('should return an object with the projects array', () => {
+      const mockState = {
+        projects: [
+          {
+            id: 1,
+            name: 'a project'
+          }, 
+          {
+            id: 2,
+            name: 'another project'
+          }
+        ],
+        palettes: [
+          {
+            id: 1,
+            project_id: 1,
+            name: 'a palette',
+            color_1: '#FFFFFF',
+            color_2: '#FFFFFF',
+            color_3: '#FFFFFF',
+            color_4: '#FFFFFF',
+            color_5: '#FFFFFF',
+          }
+        ]
+      }
+
+      const expectedState = {
+        projects: [
+          {
+            id: 1,
+            name: 'a project'
+          }, 
+          {
+            id: 2,
+            name: 'another project'
+          }
+        ],
+        palettes: [
+          {
+            id: 1,
+            project_id: 1,
+            name: 'a palette',
+            color_1: '#FFFFFF',
+            color_2: '#FFFFFF',
+            color_3: '#FFFFFF',
+            color_4: '#FFFFFF',
+            color_5: '#FFFFFF',
+          }
+        ]
+      }
+
+      const mappedProps = mapState(mockState)
+
+      expect(mappedProps).toEqual(expectedState)
+    })
+  })
+
+  describe('mapDispatch', () => {
+    it('calls dispatch with a projects array when updateProjects is called', () => {
+      const mockDispatch = jest.fn()
+
+      const actionToDispatch = addProjects([{id: 1, name: 'a name'}, {id: 2, name: 'another name'}])
+
+      const mappedProps = mapDispatch(mockDispatch)
+
+      mappedProps.updateProjects([{id: 1, name: 'a name'}, {id: 2, name: 'another name'}])
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+  })
 })
 
+
+
+// describe('mapDispatchToProps', () => {
+//   it('calls dispatch with a movies array when setMovies is called', () => {
+//     const mockDispatch = jest.fn()
+
+//     const actionToDispatch = setMovies([{title: 'a title'}, {title: 'another title'}])
+
+//     const mappedProps = mapDispatchToProps(mockDispatch)
+//     mappedProps.setMovies([{title: 'a title'}, {title: 'another title'}])
+
+//     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+//   })
 
 
 
