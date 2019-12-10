@@ -18,7 +18,7 @@ describe('SavePaletteForm', () => {
   const mockSavePalette = jest.fn();
   const mockAddPalette = jest.fn();
   beforeEach(() => {
-    wrapper = shallow(<SavePaletteForm projects={mockProjects} savePalette={mockSavePalette} addPalette={mockAddPalette}/>);
+    wrapper = shallow(<SavePaletteForm projects={mockProjects} savePalette={mockSavePalette} addPalette={mockAddPalette} />);
   });
 
   it('should match snapshot', () => {
