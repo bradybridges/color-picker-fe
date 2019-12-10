@@ -1,7 +1,7 @@
 export const getProjects = async () => {
   const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/projects');
   if (!response.ok) {
-    return Error('Failed to fetch projects');
+    throw Error('Failed to fetch projects');
   }
   const projects = await response.json();
   return projects;
@@ -10,7 +10,7 @@ export const getProjects = async () => {
 export const getPalettes = async () => {
   const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/palettes');
   if (!response.ok) {
-    return Error('Failed to fetch palettes');
+    throw Error('Failed to fetch palettes');
   }
   const palettes = await response.json();
   return palettes;
@@ -19,7 +19,7 @@ export const getPalettes = async () => {
 export const getProject = async (id) => {
   const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`);
   if (!response.ok) {
-    return Error('Failed to fetch pallete');
+    throw Error('Failed to fetch pallete');
   }
   const palette = await response.json();
   return palette;
@@ -28,7 +28,7 @@ export const getProject = async (id) => {
 export const getPalette = async (paletteId) => {
   const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/palettes/${paletteId}`);
   if (!response.ok) {
-    return Error('Failed to fetch palette');
+    throw Error('Failed to fetch palette');
   }
   const palette = await response.json();
   return palette;
@@ -41,7 +41,7 @@ export const postProject = async (name) => {
     body: JSON.stringify({ name }),
   });
   if (!response.ok) {
-    return Error('Failed to post new project');
+    throw Error('Failed to post new project');
   }
   const message = await response.json();
   return message;
@@ -64,7 +64,7 @@ export const postPalette = async (project_id, palette_name, color_1, color_2, co
     ),
   });
   if (!response.ok) {
-    return response;
+    throw Error('Failed to POST palette');
   }
   const message = await response.json();
   return message;
@@ -75,7 +75,7 @@ export const deleteProject = async (id) => {
     method: 'DELETE',
   });
   if (!response.ok) {
-    return Error('Failed to delete project');
+    throw Error('Failed to delete project');
   }
   const message = await response.json();
   return message;
@@ -86,7 +86,7 @@ export const deletePalette = async (id) => {
     method: 'DELETE',
   });
   if (!response.ok) {
-    return Error('Failed to delete palette');
+    throw Error('Failed to delete palette');
   }
   const message = await response.json();
   return message;
