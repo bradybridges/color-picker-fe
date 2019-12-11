@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SaveProjectForm SaveProjectForm component should match the snapshot 1`] = `
+<div
+  className="project-form-container"
+>
+  <form
+    className="project-form"
+  >
+    <input
+      className="project-name-input"
+      name="name"
+      onChange={[Function]}
+      placeholder="Enter project name"
+      value=""
+    />
+  </form>
+  <button
+    className="submit-project-btn"
+    onClick={[Function]}
+  >
+    Submit New Project
+  </button>
+</div>
+`;

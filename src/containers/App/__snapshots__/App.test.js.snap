@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App App component should match the snapshot 1`] = `
+<main
+  className="main-content"
+>
+  <h1
+    className="main-header"
+  >
+    Color Coordinated
+  </h1>
+  <div
+    className="button-container"
+  >
+    <button
+      className="generate-btn"
+      onClick={[Function]}
+    >
+      Generate
+    </button>
+  </div>
+  <Connect(PaletteContainer) />
+  <Connect(SaveProjectForm)
+    postProject={[MockFunction]}
+  />
+  <Connect(SavePaletteForm)
+    savePalette={[MockFunction]}
+  />
+  <section
+    className="user-projects"
+  >
+    <Connect(ProjectContainer) />
+  </section>
+</main>
+`;

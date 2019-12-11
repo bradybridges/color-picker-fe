@@ -59,6 +59,7 @@ export class ProjectCard extends Component {
     const updatedPalettes = palettes.filter((palette) => palette.project_id !== id);
     this.props.updatePalettes(updatedPalettes);
   }
+
   render() {
     const { name } = this.props;
     return (
@@ -82,7 +83,7 @@ export class ProjectCard extends Component {
 
 export const mapState = (state) => ({
   palettes: state.palettes,
-  projects: state.projects,
+  projects: state.projects
 });
 
 export const mapDispatch = (dispatch) => ({
