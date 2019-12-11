@@ -27,7 +27,7 @@ export class SavePaletteForm extends Component {
   }
 
   resetForm = () => {
-    this.setState({ selectedProject: 1, paletteName: '' });
+    this.setState({ paletteName: '' });
   }
 
   renderProjectOptions = () => {
