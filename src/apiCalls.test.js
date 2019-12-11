@@ -385,35 +385,3 @@ describe('deleteProject', () => {
     expect(result).rejects.toEqual(Error('fetch failed'))
   })
 })
-
-// describe('deletePalette', () => {
-//   beforeEach(() => {
-//     window.fetch = jest.fn().mockImplementation(() => {
-//       return Promise.resolve({
-//         ok: true,
-//         json: () => Promise.resolve('Successfully deleted palette'),
-//       });
-//     });
-//   });
-//   it('should be called with the correct url', () => {
-//     const expectedUrl = 'https://color-picker-backend.herokuapp.com/api/v1/palettes/1';
-//     const expectedBody = { method: 'DELETE' };
-//     api.deletePalette(1);
-//     expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedBody);
-//   });
-//   it('should return a success message if deletion succeeds', () => {
-//     const result = api.deletePalette(1);
-//     expect(result).resolves.toEqual('Successfully deleted palette');
-//   });
-//   it('should return an error if response is not okay', () => {
-//     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({ ok: false }));
-//     const result = api.deletePalette(1);
-//     expect(result).rejects.toEqual(Error('Failed to delete palette'));
-//   });
-//   it('should return an error if the promise rejects', () => {
-//     window.fetch = jest.fn().mockImplementation(() => Promise.reject(Error('Failed to delete palette')));
-//     const result = api.deletePalette(1);
-//     expect(result).rejects.toEqual(Error('Failed to delete palette'));
-//   });
-// });
-
