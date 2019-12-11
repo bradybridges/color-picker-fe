@@ -10,7 +10,6 @@ export class Palette extends Component {
     const updatedPalettes = this.props.palettes.filter((palette) => palette.id !== id);
     this.props.updatePalettes(updatedPalettes);
     const response = await deletePalette(id);
-    console.log(response);
   }
 
   loadPalette = () => {

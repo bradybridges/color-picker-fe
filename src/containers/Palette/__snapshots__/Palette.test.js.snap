@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palette should match snapshot 1`] = `
+<section
+  className="palette"
+  onClick={[Function]}
+>
+  <div
+    className="title-container"
+  >
+    <h6
+      className="palette-name"
+    >
+      New Palette
+    </h6>
+    <img
+      alt="delete button"
+      className="delete-button"
+      onClick={[Function]}
+      src={
+        Object {
+          "ReactComponent": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "__esModule": true,
+          "default": "delete.svg",
+        }
+      }
+    />
+  </div>
+  <div
+    className="palette-color-container"
+  >
+    <div
+      className="color1"
+      style={
+        Object {
+          "backgroundColor": "#000000",
+        }
+      }
+    />
+    <div
+      className="color2"
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+        }
+      }
+    />
+    <div
+      className="color3"
+      style={
+        Object {
+          "backgroundColor": "#CCCCCC",
+        }
+      }
+    />
+    <div
+      className="color4"
+      style={
+        Object {
+          "backgroundColor": "#1F1F1F",
+        }
+      }
+    />
+    <div
+      className="color5"
+      style={
+        Object {
+          "backgroundColor": "#1D1D1D",
+        }
+      }
+    />
+  </div>
+</section>
+`;
