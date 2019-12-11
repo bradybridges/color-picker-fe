@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './ProjectCard.scss';
 import Palette from '../Palette/Palette';
@@ -90,3 +91,12 @@ export const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(ProjectCard);
+
+ProjectCard.propTypes = {
+  palettes: PropTypes.array.isRequired,
+  projects: PropTypes.array.isRequired,
+  updateProjects: PropTypes.func.isRequired,
+  updatePalettes: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+};

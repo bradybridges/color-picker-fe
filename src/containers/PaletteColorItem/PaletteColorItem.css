@@ -2,6 +2,9 @@
   border-radius: 50%;
   margin: 15px;
   text-align: center;
+  min-width: 200px;
+  max-width: 200px;
+  height: 200px;
 }
 
 .color-code {

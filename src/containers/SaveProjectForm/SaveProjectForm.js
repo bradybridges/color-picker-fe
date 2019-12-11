@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { addNewProject } from '../../actions/index'
 import './SaveProjectForm.css'
@@ -29,7 +30,6 @@ export class SaveProjectForm extends Component {
       name: name,
       id: id
     }
-    console.log('id', id)
     addNewProject(newProject)
     this.clearInput()
   }
@@ -68,3 +68,9 @@ export const mapDispatch = (dispatch) => ({
 })
 
 export default connect(mapState, mapDispatch)(SaveProjectForm);
+
+SaveProjectForm.propTypes = {
+  projects: PropTypes.array.isRequired,
+  addNewProject: PropTypes.func.isRequired,
+  postProject: PropTypes.func.isRequired,
+}

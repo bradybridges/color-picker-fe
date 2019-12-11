@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import './Palette.css'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './Palette.css';
 import { connect } from 'react-redux';
 import { addPalettes, setTempPalette } from '../../actions/index';
 import { deletePalette } from '../../apiCalls';
@@ -9,7 +10,7 @@ export class Palette extends Component {
     const id = Number(this.props.id);
     const updatedPalettes = this.props.palettes.filter((palette) => palette.id !== id);
     this.props.updatePalettes(updatedPalettes);
-    const response = await deletePalette(id);
+    deletePalette(id);
   }
 
   loadPalette = () => {
@@ -59,3 +60,16 @@ export const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(Palette);
+
+Palette.propTypes = {
+  palettes: PropTypes.array.isRequired,
+  updatePalettes: PropTypes.func.isRequired,
+  setTempPalette: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  palette_name: PropTypes.string.isRequired,
+  color_1: PropTypes.string.isRequired,
+  color_2: PropTypes.string.isRequired,
+  color_3: PropTypes.string.isRequired,
+  color_4: PropTypes.string.isRequired,
+  color_5: PropTypes.string.isRequired,
+};

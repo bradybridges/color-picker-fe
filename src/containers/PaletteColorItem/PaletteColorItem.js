@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setTempPalette } from '../../actions/index';
 import './PaletteColorItem.css'
@@ -24,10 +25,10 @@ export class PaletteColorItem extends Component {
     const lockImg = isLocked ? lockedImg : unlockedImg;
     const style = { backgroundColor: color }
     return (
-      <section style={style} className='color-container'>
+      <section style={style} className='color-container' onClick={this.handleToggleColorLock}>
         <div className='color-container-contents'>
           <p className='color-code'>{color}</p>
-          <img src={lockImg} className='color-lock-img' alt="lock or unlock color" onClick={this.handleToggleColorLock}/>
+          <img src={lockImg} className='color-lock-img' alt="lock or unlock color" />
         </div>
       </section>
     );
@@ -43,3 +44,10 @@ export const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(PaletteColorItem);
+
+PaletteColorItem.propTypes = {
+  tempPalette: PropTypes.array.isRequired,
+  setTempPalette: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  isLocked: PropTypes.bool.isRequired,
+};

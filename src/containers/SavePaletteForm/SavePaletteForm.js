@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPalette } from '../../actions/index';
-import './SavePaletteForm.css'
+import './SavePaletteForm.scss'
 
 export class SavePaletteForm extends Component {
   constructor() {
@@ -23,6 +24,10 @@ export class SavePaletteForm extends Component {
     this.setState({
       paletteName: e.target.value,
     })
+  }
+
+  resetForm = () => {
+    this.setState({ selectedProject: 1, paletteName: '' });
   }
 
   renderProjectOptions = () => {
@@ -59,6 +64,7 @@ export class SavePaletteForm extends Component {
       color_5: color5,
     }
     this.props.addPalette(newPalette);
+    this.resetForm();
   }
 
   render() {
@@ -89,3 +95,10 @@ export const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(SavePaletteForm);
+
+SavePaletteForm.propTypes = {
+  tempPalette: PropTypes.array.isRequired,
+  projects: PropTypes.array.isRequired,
+  addPalette: PropTypes.func.isRequired,
+  savePalette: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 import * as api from '../../apiCalls';
 import * as actions from '../../actions/index';
@@ -86,3 +87,12 @@ export const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(App);
+
+App.propTypes = {
+  setProjects: PropTypes.func.isRequired,
+  setPalettes: PropTypes.func.isRequired,
+  setTempPalette: PropTypes.func.isRequired,
+  projects: PropTypes.array.isRequired,
+  palettes: PropTypes.array.isRequired,
+  tempPalette: PropTypes.array.isRequired,
+};

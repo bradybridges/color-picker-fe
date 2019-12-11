@@ -39,7 +39,7 @@ describe('Palette', () => {
   beforeEach(() => {
     wrapper = shallow(
       <Palette
-        id="1"
+        id={1}
         palette_name={name}
         color_1={color1}
         color_2={color2}

@@ -24,6 +24,9 @@
   width: 20%;
   height: 35px;
   border-color: #2d9fcc;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 select {
@@ -33,4 +36,7 @@ select {
   height: 37px;
   margin: 5px;
   width: 20%;
+  &:hover {
+    cursor: pointer;
+  }
 }
