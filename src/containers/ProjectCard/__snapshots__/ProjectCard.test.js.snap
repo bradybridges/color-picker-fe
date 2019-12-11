@@ -4,11 +4,14 @@ exports[`ProjectCard ProjectCard component should match the snapshot 1`] = `
 <section
   className="project-card"
 >
-  <div>
+  <div
+    className="project-title-container"
+  >
     <h4
       className="project-name"
     />
     <button
+      className="project-button"
       onClick={[Function]}
       type="button"
     >
