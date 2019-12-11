@@ -1,5 +1,8 @@
+require('dotenv').config()
+// console.log(process.env.REACT_APP_BACKEND)
+
 export const getProjects = async () => {
-  const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/projects');
+  const response = await fetch(process.env.REACT_APP_BACKEND +'/api/v1/projects');
   if (!response.ok) {
     throw Error('Failed to fetch projects');
   }
@@ -8,7 +11,7 @@ export const getProjects = async () => {
 };
 
 export const getPalettes = async () => {
-  const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/palettes');
+  const response = await fetch(process.env.REACT_APP_BACKEND  +'/api/v1/palettes');
   if (!response.ok) {
     throw Error('Failed to fetch palettes');
   }
@@ -17,7 +20,7 @@ export const getPalettes = async () => {
 };
 
 export const getProject = async (id) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`);
+  const response = await fetch(process.env.REACT_APP_BACKEND +`/api/v1/projects/${id}`);
   if (!response.ok) {
     throw Error('Failed to fetch project');
   }
@@ -26,7 +29,7 @@ export const getProject = async (id) => {
 };
 
 export const getPalette = async (paletteId) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/palettes/${paletteId}`);
+  const response = await fetch(process.env.REACT_APP_BACKEND + `/api/v1/palettes/${paletteId}`);
   if (!response.ok) {
     throw Error('Failed to fetch palette');
   }
@@ -35,7 +38,7 @@ export const getPalette = async (paletteId) => {
 };
 
 export const postProject = async (name) => {
-  const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/projects', {
+  const response = await fetch(process.env.REACT_APP_BACKEND + '/api/v1/projects', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name }),
@@ -48,7 +51,7 @@ export const postProject = async (name) => {
 };
 
 export const postPalette = async (project_id, palette_name, color_1, color_2, color_3, color_4, color_5) => {
-  const response = await fetch('https://color-picker-backend.herokuapp.com/api/v1/palettes', {
+  const response = await fetch(process.env.REACT_APP_BACKEND + '/api/v1/palettes', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(
@@ -71,7 +74,7 @@ export const postPalette = async (project_id, palette_name, color_1, color_2, co
 };
 
 export const deleteProject = async (id) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`, {
+  const response = await fetch(process.env.REACT_APP_BACKEND  +`/api/v1/projects/${id}`, {
     method: 'DELETE',
   });
   if (!response.ok) {
@@ -82,7 +85,7 @@ export const deleteProject = async (id) => {
 };
 
 export const deletePalette = async (id) => {
-  const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/palettes/${id}`, {
+  const response = await fetch(process.env.REACT_APP_BACKEND  +`/api/v1/palettes/${id}`, {
     method: 'DELETE',
   });
   if (!response.ok) {
