@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPalette } from '../../actions/index';
 import './SavePaletteForm.scss'
@@ -94,3 +95,10 @@ export const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(SavePaletteForm);
+
+SavePaletteForm.propTypes = {
+  tempPalette: PropTypes.array.isRequired,
+  projects: PropTypes.array.isRequired,
+  addPalette: PropTypes.func.isRequired,
+  savePalette: PropTypes.func.isRequired,
+};

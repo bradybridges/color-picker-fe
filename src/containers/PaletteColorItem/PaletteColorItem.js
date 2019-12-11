@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setTempPalette } from '../../actions/index';
 import './PaletteColorItem.css'
@@ -43,3 +44,10 @@ export const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(PaletteColorItem);
+
+PaletteColorItem.propTypes = {
+  tempPalette: PropTypes.array.isRequired,
+  setTempPalette: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  isLocked: PropTypes.bool.isRequired,
+};

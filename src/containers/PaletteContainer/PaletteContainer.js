@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PaletteColorItem from '../PaletteColorItem/PaletteColorItem';
 import './PaletteContainer.css'
@@ -25,3 +26,7 @@ export const mapState = (state) => ({
 });
 
 export default connect(mapState)(PaletteContainer);
+
+PaletteContainer.propTypes = {
+  tempPalette: PropTypes.array.isRequired,
+};
