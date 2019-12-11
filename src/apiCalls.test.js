@@ -370,7 +370,7 @@ describe('deleteProject', () => {
 
   it('should return an error if the repsonse is not ok', () => {
     window.fetch = jest.fn().mockImplementation(() => {
-      return Promise.resolves({ ok: false })
+      return Promise.resolve({ ok: false })
     })
     const result = api.deleteProject(1)
     expect(result).rejects.toEqual(Error('Failed to delete project'))
