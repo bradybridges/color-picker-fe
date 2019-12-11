@@ -15,10 +15,44 @@ describe('SavePaletteForm', () => {
       name: 'Another Great Project',
     },
   ];
-  const mockSavePalette = jest.fn();
+  const mockTempPalette = [
+    {
+      name: 'color_1',
+      color: '#BB2855',
+      isLocked: true,
+    },
+    {
+      name: 'color_2',
+      color: '#AD12FF',
+      isLocked: false,
+    },
+    {
+      name: 'color_3',
+      color: '#FFFFFF',
+      isLocked: false,
+    },
+    {
+      name: 'color_4',
+      color: '#ABABAB',
+      isLocked: false,
+    },
+    {
+      name: 'color_5',
+      color: '#CCCCCC',
+      isLocked: true,
+    },
+  ];
+  const mockSavePalette = jest.fn().mockImplementation(() => {
+    return Promise.resolve({ id: 1 });
+  });
   const mockAddPalette = jest.fn();
   beforeEach(() => {
-    wrapper = shallow(<SavePaletteForm projects={mockProjects} savePalette={mockSavePalette} addPalette={mockAddPalette} />);
+    wrapper = shallow(<SavePaletteForm
+      projects={mockProjects}
+      savePalette={mockSavePalette}
+      addPalette={mockAddPalette}
+      tempPalette={mockTempPalette}
+    />);
   });
 
   it('should match snapshot', () => {
@@ -55,6 +89,25 @@ describe('SavePaletteForm', () => {
       + '"_owner":null,"_store":{}}]},"_owner":null,"_store":{}}';
     const result = wrapper.instance().renderProjectOptions();
     expect(JSON.stringify(result)).toEqual(expected);
+  });
+  it('handleSubmit should update the store, add palette to BE, and reset the form', async () => {
+    const mockEvent = { preventDefault: jest.fn() };
+    const expected = {
+      color_1: '#BB2855',
+      color_2: '#AD12FF',
+      color_3: '#FFFFFF',
+      color_4: '#ABABAB',
+      color_5: '#CCCCCC',
+      id: 1,
+      palette_name: 'Testing',
+      project_id: 1,
+    };
+    wrapper.setState({ paletteName: 'Testing' });
+    wrapper.instance().resetForm = jest.fn();
+    await wrapper.instance().handleSubmit(mockEvent);
+    expect(mockSavePalette).toHaveBeenCalledWith(1, 'Testing', '#BB2855', '#AD12FF', '#FFFFFF', '#ABABAB', '#CCCCCC');
+    expect(mockAddPalette).toHaveBeenCalledWith(expected);
+    expect(wrapper.instance().resetForm).toHaveBeenCalled();
   });
 });
 
