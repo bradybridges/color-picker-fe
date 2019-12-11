@@ -13,7 +13,7 @@ describe('SaveProjectForm', () => {
 
     beforeEach(() => {
 
-      postProject.mockImplementation(() => {
+     const mockPostProject = postProject.mockImplementation(() => {
         return Promise.resolve({id: 3})
       })
       const mockProjects = [
@@ -27,9 +27,9 @@ describe('SaveProjectForm', () => {
         }
       ]
 
-      const mockPostProject = jest.fn()
+      const mockAddNewProject = jest.fn()
       
-      wrapper = shallow(<SaveProjectForm projects={mockProjects} postProject={mockPostProject} />)
+      wrapper = shallow(<SaveProjectForm projects={mockProjects} postProject={mockPostProject} addNewProject={mockAddNewProject} />)
     })
 
     it('should match the snapshot', () => {
@@ -46,29 +46,32 @@ describe('SaveProjectForm', () => {
       expect(wrapper.state('name')).toEqual(expected)
     })
 
-    it('should call the handleSubmit method method when the button is clicked with the correct information', () => {
-      wrapper.instance().handleSubmit = jest.fn()
-      wrapper.instance().forceUpdate()
+    it('should reset state to an empty string on clearInput', () => {
+      const defaultState = {name: 'rainbows'}
+      const resetState = {name: ''}
 
-      wrapper.find('button').simulate('click')
+      wrapper.instance().setState(defaultState)
+      wrapper.instance().clearInput()
 
-      expect(wrapper.instance().handleSubmit).toHaveBeenCalled()
+      expect(wrapper.state()).toEqual(resetState)
     })
 
-    it.skip('should call handleSubmit with the correct information', () => {
+    it('should call addNewProject when handleSubmit is called', async () => {
       const mockEvent = { preventDefault: jest.fn() }
+    
+      const mockState = { name: 'rainbows and unicorns'}
 
-      wrapper.instance().setState({'name': 'rainbows and unicorns'})
+      wrapper.instance().setState(mockState)
 
-      wrapper.instance().addNewProject = jest.fn()
+      wrapper.instance().forceUpdate()
+     
+      await wrapper.instance().handleSubmit(mockEvent)
+      
+      expect(postProject).toHaveBeenCalled()
+      expect(postProject).toHaveBeenCalledWith('rainbows and unicorns')
+      expect(wrapper.instance().addNewProject).toHaveBeenCalled()
 
-      wrapper.instance().handleSubmit = jest.fn()
-
-      wrapper.instance().handleSubmit(mockEvent)
-
-      expect(wrapper.instance().handleSubmit).toHaveBeenCalled
-
-
+      // expect(wrapper.instance().addNewProject).toHaveBeenCalled()
     })
   })
 })
