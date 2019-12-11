@@ -1,4 +1,5 @@
 import * as api from './apiCalls';
+require('dotenv').config()
 
 describe('getPalettes', () => {
   const mockPalettes = [
@@ -30,7 +31,7 @@ describe('getPalettes', () => {
     });
   });
   it('should be called with the correct url', () => {
-    const expected = 'https://color-picker-backend.herokuapp.com/api/v1/palettes';
+    const expected = process.env.REACT_APP_BACKEND + `/api/v1/palettes`;
     api.getPalettes();
     expect(window.fetch).toHaveBeenCalledWith(expected);
   });
@@ -73,7 +74,7 @@ describe('getPalette', () => {
     });
   });
   it('should be called with the correct url', () => {
-    const expected = 'https://color-picker-backend.herokuapp.com/api/v1/palettes/1';
+    const expected = process.env.REACT_APP_BACKEND + `/api/v1/palettes/1`;
     api.getPalette(1);
     expect(window.fetch).toHaveBeenCalledWith(expected);
   });
@@ -117,7 +118,7 @@ describe('postPalette', () => {
   });
   it('should be called with the correct url and body', () => {
     const { projectId, paletteName, color1, color2, color3, color4, color5 } = mockPalette;
-    const expectedUrl = 'https://color-picker-backend.herokuapp.com/api/v1/palettes';
+    const expectedUrl = process.env.REACT_APP_BACKEND + `/api/v1/palettes`;
     const expectedBody = {
       "body": "{\"project_id\":2,\"palette_name\":\"Great Palette\",\"color_1\":\"#000000\",\"color_2\":\"#FFFFFF\",\"color_3\":\"#1F1F1F\",\"color_4\":\"#1D1D1D\",\"color_5\":\"#CCCCCC\"}",
       "headers": {
@@ -158,7 +159,7 @@ describe('deletePalette', () => {
     });
   });
   it('should be called with the correct url', () => {
-    const expectedUrl = 'https://color-picker-backend.herokuapp.com/api/v1/palettes/1';
+    const expectedUrl = process.env.REACT_APP_BACKEND+ `/api/v1/palettes/1`;
     const expectedBody = { method: 'DELETE' };
     api.deletePalette(1);
     expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedBody);
@@ -200,7 +201,7 @@ describe('getProjects', () => {
     }) 
   })
   it('should call fetch with the correct URL', () => {
-    const expected = 'https://color-picker-backend.herokuapp.com/api/v1/projects'
+    const expected = process.env.REACT_APP_BACKEND + `/api/v1/projects`
   
     api.getProjects()
   
@@ -249,7 +250,7 @@ describe('getProject', () => {
   })
 
   it('should call fetch with the correct URL', () => {
-    const expectedUrl = 'https://color-picker-backend.herokuapp.com/api/v1/projects/1'
+    const expectedUrl = process.env.REACT_APP_BACKEND + `/api/v1/projects/1`
 
     api.getProject(1)
 
@@ -299,7 +300,7 @@ describe('postProject', () => {
   it('should be called with the correct url and body', () => {
     const { name } = mockProject
 
-    const expectedUrl = 'https://color-picker-backend.herokuapp.com/api/v1/projects'
+    const expectedUrl = process.env.REACT_APP_BACKEND + `/api/v1/projects`
 
     const expectedBody = {
       "body": "{\"name\":\"hi this is a project\"}",
@@ -354,7 +355,7 @@ describe('deleteProject', () => {
 
   it('should be called with the correct URL', () => {
     const { id } = mockProject
-    const expectedUrl = `https://color-picker-backend.herokuapp.com/api/v1/projects/1`
+    const expectedUrl = process.env.REACT_APP_BACKEND + `/api/v1/projects/1`
 
     const expectedBody = {method: 'DELETE'}
 
