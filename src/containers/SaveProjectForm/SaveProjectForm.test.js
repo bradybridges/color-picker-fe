@@ -61,6 +61,8 @@ describe('SaveProjectForm', () => {
     
       const mockState = { name: 'rainbows and unicorns'}
 
+      wrapper.instance().clearInput = jest.fn()
+
       wrapper.instance().setState(mockState)
 
       wrapper.instance().forceUpdate()
@@ -69,10 +71,72 @@ describe('SaveProjectForm', () => {
       
       expect(postProject).toHaveBeenCalled()
       expect(postProject).toHaveBeenCalledWith('rainbows and unicorns')
-      expect(wrapper.instance().addNewProject).toHaveBeenCalled()
+      //why did i have to use wrapper.instance.props here?
+      expect(wrapper.instance().props.addNewProject).toHaveBeenCalled()
+
+      expect(wrapper.instance().props.addNewProject).toHaveBeenCalledWith({name: 'rainbows and unicorns', id: 3})
+      expect(wrapper.instance().clearInput).toHaveBeenCalled()
 
       // expect(wrapper.instance().addNewProject).toHaveBeenCalled()
     })
+  })
+
+  describe('mapState', () => {
+    it('should return an object with the projects array', () => {
+      const mockState = {
+        projects: [
+          {
+            id: 1,
+            name: 'a project'
+          }, 
+          {
+            id: 2,
+            name: 'another project'
+          }
+        ],
+        palettes: [
+          {
+            id: 1,
+            project_id: 1,
+            name: 'a palette',
+            color_1: '#FFFFFF',
+            color_2: '#FFFFFF',
+            color_3: '#FFFFFF',
+            color_4: '#FFFFFF',
+            color_5: '#FFFFFF',
+          }
+        ]
+      }
+
+      const expectedState = {
+        projects: [
+          {
+            id: 1,
+            name: 'a project'
+          }, 
+          {
+            id: 2,
+            name: 'another project'
+          }
+        ]
+      }
+
+      const mappedProps = mapState(mockState)
+
+      expect(mappedProps).toEqual(expectedState)
+    })
+  })
+
+  describe('mapDispatch', () => {
+    const mockDispatch = jest.fn()
+
+    const actionToDispatch = addNewProject({name: 'a beautiful little butterfly', id: 4})
+
+    const mappedProps = mapDispatch(mockDispatch)
+
+    mappedProps.addNewProject({name:'a beautiful little butterfly', id: 4})
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
   })
 })
 
