@@ -50,8 +50,9 @@ describe('ProjectCard', () => {
 
       const mockUpdateProjects = jest.fn();
       const mockUpdatePalettes = jest.fn()
-      wrapper = shallow(<ProjectCard 
-        palettes={mockPalettes} 
+      wrapper = shallow(<ProjectCard
+        name="Great Project"
+        palettes={mockPalettes}
         projects={mockProjects}
         id={1} 
         updateProjects={mockUpdateProjects} 
