@@ -186,7 +186,7 @@ describe('SaveProjectForm', () => {
 //   wrapper.instance().submitForm = jest.fn()
 //   wrapper.instance().forceUpdate()
 
-//   wrapper.find('button').simulate('click')
+//   .simulate('click')
 
 //   expect(wrapper.instance().submitForm).toHaveBeenCalled()
 // })
