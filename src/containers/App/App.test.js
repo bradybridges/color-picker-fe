@@ -179,6 +179,188 @@ describe('App', () => {
       expect(wrapper.instance().props.setTempPalette).toHaveBeenCalled()
     })
   })
+
+  describe('mapState', () => {
+    it('should return an object with the projects, palettes, and tempPalettes arrays', () => {
+      const mockState = {
+        projects: [
+          {
+            id: 1,
+            name: 'a project'
+          },
+          {
+            id: 2,
+            name: 'another project'
+          }
+        ],
+        palettes: [
+          {
+            id: 1,
+            project_id: 1,
+            name: 'a palette',
+            color_1: '#FFFFFF',
+            color_2: '#111111',
+            color_3: '#222222',
+            color_4: '#333333',
+            color_5: '#444444',
+          },
+          {
+            id: 2,
+            project_id: 1,
+            name: 'some other palette',
+            color_1: '#000000',
+            color_2: '#AAAAAA',
+            color_3: '#BBBBBB',
+            color_4: '#CCCCCC',
+            color_5: '#DDDDDD',
+          }
+        ],
+        tempPalette: [
+          {name: 'color_1', color: '#AAAAAA', isLocked: false},
+          {name: 'color_2', color: '#AAAAAA', isLocked: false},
+          {name: 'color_3', color: '#AAAAAA', isLocked: false},
+          {name: 'color_4', color: '#AAAAAA', isLocked: false},
+        ]
+      }
+
+      const expectedState = {
+        projects: [
+          {
+            id: 1,
+            name: 'a project'
+          },
+          {
+            id: 2,
+            name: 'another project'
+          }
+        ],
+        palettes: [
+          {
+            id: 1,
+            project_id: 1,
+            name: 'a palette',
+            color_1: '#FFFFFF',
+            color_2: '#111111',
+            color_3: '#222222',
+            color_4: '#333333',
+            color_5: '#444444',
+          },
+          {
+            id: 2,
+            project_id: 1,
+            name: 'some other palette',
+            color_1: '#000000',
+            color_2: '#AAAAAA',
+            color_3: '#BBBBBB',
+            color_4: '#CCCCCC',
+            color_5: '#DDDDDD',
+          }
+        ],
+        tempPalette: [
+          {name: 'color_1', color: '#AAAAAA', isLocked: false},
+          {name: 'color_2', color: '#AAAAAA', isLocked: false},
+          {name: 'color_3', color: '#AAAAAA', isLocked: false},
+          {name: 'color_4', color: '#AAAAAA', isLocked: false},
+        ]
+      }
+
+      const mappedProps = mapState(mockState)
+
+      expect(mappedProps).toEqual(expectedState)
+    })
+  })
+
+  describe('mapDispatch', () => {
+    it('calls dispatch with a projects array when addProjects is called', () => {
+      const mockDispatch = jest.fn()
+
+      const actionToDispatch = addProjects([{id: 1, name: 'a project'}, {id: 2, name: 'another project'}])
+
+      const mappedProps = mapDispatch(mockDispatch)
+
+      mappedProps.setProjects([{id: 1, name: 'a project'}, {id: 2, name: 'another project'}])
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+
+    it('calls dispatch with a pelttes array when setPalettes is called', () => {
+      const mockDispatch = jest.fn()
+
+      const actionToDispatch = addPalettes([
+        {
+          id: 1,
+          project_id: 1,
+          name: 'a palette',
+          color_1: '#FFFFFF',
+          color_2: '#111111',
+          color_3: '#222222',
+          color_4: '#333333',
+          color_5: '#444444',
+        },
+        {
+          id: 2,
+          project_id: 1,
+          name: 'some other palette',
+          color_1: '#000000',
+          color_2: '#AAAAAA',
+          color_3: '#BBBBBB',
+          color_4: '#CCCCCC',
+          color_5: '#DDDDDD',
+        }
+      ])
+
+      const mappedProps = mapDispatch(mockDispatch)
+
+      mappedProps.setPalettes([
+        {
+          id: 1,
+          project_id: 1,
+          name: 'a palette',
+          color_1: '#FFFFFF',
+          color_2: '#111111',
+          color_3: '#222222',
+          color_4: '#333333',
+          color_5: '#444444',
+        },
+        {
+          id: 2,
+          project_id: 1,
+          name: 'some other palette',
+          color_1: '#000000',
+          color_2: '#AAAAAA',
+          color_3: '#BBBBBB',
+          color_4: '#CCCCCC',
+          color_5: '#DDDDDD',
+        }
+      ])
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+
+    it('should call setTempPalette with a temp palette array', () => {
+      const mockDispatch = jest.fn()
+
+      const actionToDispatch = setTempPalette([
+        {name: 'color_1', color: '#AAAAAA', isLocked: false},
+        {name: 'color_2', color: '#AAAAAA', isLocked: false},
+        {name: 'color_3', color: '#AAAAAA', isLocked: false},
+        {name: 'color_4', color: '#AAAAAA', isLocked: false},
+        {name: 'color_5', color: '#AAAAAA', isLocked: false},
+      ])
+
+      const mappedProps = mapDispatch(mockDispatch)
+
+      mappedProps.setTempPalette([
+        {name: 'color_1', color: '#AAAAAA', isLocked: false},
+        {name: 'color_2', color: '#AAAAAA', isLocked: false},
+        {name: 'color_3', color: '#AAAAAA', isLocked: false},
+        {name: 'color_4', color: '#AAAAAA', isLocked: false},
+        {name: 'color_5', color: '#AAAAAA', isLocked: false},
+      ])
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+  })
 })
 
 
