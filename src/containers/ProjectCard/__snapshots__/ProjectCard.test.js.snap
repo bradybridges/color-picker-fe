@@ -9,7 +9,9 @@ exports[`ProjectCard ProjectCard component should match the snapshot 1`] = `
   >
     <h4
       className="project-name"
-    />
+    >
+      Great Project
+    </h4>
     <button
       className="project-button"
       onClick={[Function]}
