@@ -25,6 +25,10 @@ export class SavePaletteForm extends Component {
     })
   }
 
+  resetForm = () => {
+    this.setState({ selectedProject: 1, paletteName: '' });
+  }
+
   renderProjectOptions = () => {
     const options = this.props.projects.map((project) => {
       return <option key={`${project.name}`} value={project.id}>{project.name}</option>
@@ -59,6 +63,7 @@ export class SavePaletteForm extends Component {
       color_5: color5,
     }
     this.props.addPalette(newPalette);
+    this.resetForm();
   }
 
   render() {

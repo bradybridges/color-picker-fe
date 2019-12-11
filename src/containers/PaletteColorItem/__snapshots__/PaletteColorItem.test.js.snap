@@ -3,6 +3,7 @@
 exports[`PaletteColorItem should match snapshot 1`] = `
 <section
   className="color-container"
+  onClick={[Function]}
   style={
     Object {
       "backgroundColor": "#CCCCCC",
@@ -20,7 +21,6 @@ exports[`PaletteColorItem should match snapshot 1`] = `
     <img
       alt="lock or unlock color"
       className="color-lock-img"
-      onClick={[Function]}
       src={
         Object {
           "ReactComponent": Object {

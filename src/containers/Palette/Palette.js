@@ -9,7 +9,7 @@ export class Palette extends Component {
     const id = Number(this.props.id);
     const updatedPalettes = this.props.palettes.filter((palette) => palette.id !== id);
     this.props.updatePalettes(updatedPalettes);
-    const response = await deletePalette(id);
+    deletePalette(id);
   }
 
   loadPalette = () => {

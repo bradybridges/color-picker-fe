@@ -39,6 +39,14 @@ describe('SavePaletteForm', () => {
     wrapper.instance().handleInputChange(mockEvent);
     expect(wrapper.state('paletteName')).toEqual('New Palette');
   });
+  it('resetForm should reset state', () => {
+    const alteredState = { selectedProject: 20, paletteName: 'Test' };
+    const expectedState = { selectedProject: 1, paletteName: '' };
+    wrapper.setState({ selectedProject: 20, paletteName: 'Test' });
+    expect(wrapper.state()).toEqual(alteredState);
+    wrapper.instance().resetForm();
+    expect(wrapper.state()).toEqual(expectedState);
+  });
   it('renderProjectOptions should return a select element with project as options', () => {
     const expected = '{"type":"select","key":null,"ref":null,"props":'
       + '{"children":[{"type":"option","key":"Great Project","ref":null,"props"'
