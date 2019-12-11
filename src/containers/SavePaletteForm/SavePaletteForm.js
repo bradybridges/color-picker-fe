@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addPalette } from '../../actions/index';
-import './SavePaletteForm.css'
+import './SavePaletteForm.scss'
 
 export class SavePaletteForm extends Component {
   constructor() {

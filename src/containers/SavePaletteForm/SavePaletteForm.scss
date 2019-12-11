@@ -24,6 +24,9 @@
   width: 20%;
   height: 35px;
   border-color: #2d9fcc;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 select {
