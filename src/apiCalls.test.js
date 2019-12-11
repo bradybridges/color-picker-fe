@@ -178,3 +178,82 @@ describe('deletePalette', () => {
     expect(result).rejects.toEqual(Error('Failed to delete palette'));
   });
 });
+
+describe('getProjects', () => {
+  const mockProjects = [
+    {
+      id: 1,
+      name: 'a project'
+    },
+    {
+      id: 2,
+      name: 'another project'
+    }
+  ]
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockProjects)
+      })
+    }) 
+  })
+  it('should call fetch with the correct URL', () => {
+    const expected = 'https://color-picker-backend.herokuapp.com/api/v1/projects'
+  
+    api.getProjects()
+  
+    expect(window.fetch).toHaveBeenCalledWith(expected)
+  })
+
+  it('should return an array of projects', () => {
+    const result = api.getProjects()
+
+    expect(result).resolves.toEqual(mockProjects)
+  })
+
+  it('should return an error if the fetch is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({ ok: false })
+    })
+
+    const result = api.getProjects()
+
+    expect(result).rejects.toEqual(Error('Failed to fetch projects'))
+  })
+
+  it('should return an error if the promise rejects', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('Failed to fetch'))
+    })
+
+    const result = api.getProjects()
+    expect(result).rejects.toEqual(Error('Failed to fetch'))
+  })
+
+})
+
+// it('should return an error if the promise rejects', () => {
+//   window.fetch = jest.fn().mockImplementation(() => {
+//     return Promise.reject(Error('Failed to fetch'));
+//   });
+//   const result = api.getPalettes();
+//   expect(result).rejects.toEqual(Error('Failed to fetch'));
+// });
+// it('should return an error if the fetch fails', () => {
+//   window.fetch = jest.fn().mockImplementation(() => {
+//     return Promise.resolve({ ok: false });
+//   });
+//   const result = api.getPalette();
+//   expect(result).rejects.toEqual(Error('Failed to fetch palette'));
+// it('should return an array of palettes', () => {
+//     const results = api.getPalettes();
+//     expect(results).resolves.toEqual(mockPalettes);
+//   });
+
+// it('should be called with the correct url', () => {
+//   const expected = 'https://color-picker-backend.herokuapp.com/api/v1/palettes';
+//   api.getPalettes();
+//   expect(window.fetch).toHaveBeenCalledWith(expected);
+// });
