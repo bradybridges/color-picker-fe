@@ -24,10 +24,10 @@ export class PaletteColorItem extends Component {
     const lockImg = isLocked ? lockedImg : unlockedImg;
     const style = { backgroundColor: color }
     return (
-      <section style={style} className='color-container'>
+      <section style={style} className='color-container' onClick={this.handleToggleColorLock}>
         <div className='color-container-contents'>
           <p className='color-code'>{color}</p>
-          <img src={lockImg} className='color-lock-img' alt="lock or unlock color" onClick={this.handleToggleColorLock}/>
+          <img src={lockImg} className='color-lock-img' alt="lock or unlock color" />
         </div>
       </section>
     );

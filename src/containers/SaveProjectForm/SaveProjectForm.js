@@ -29,7 +29,6 @@ export class SaveProjectForm extends Component {
       name: name,
       id: id
     }
-    console.log('id', id)
     addNewProject(newProject)
     this.clearInput()
   }
