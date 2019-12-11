@@ -19,7 +19,7 @@ export const getPalettes = async () => {
 export const getProject = async (id) => {
   const response = await fetch(`https://color-picker-backend.herokuapp.com/api/v1/projects/${id}`);
   if (!response.ok) {
-    throw Error('Failed to fetch pallete');
+    throw Error('Failed to fetch project');
   }
   const palette = await response.json();
   return palette;

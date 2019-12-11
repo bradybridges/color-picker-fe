@@ -178,3 +178,210 @@ describe('deletePalette', () => {
     expect(result).rejects.toEqual(Error('Failed to delete palette'));
   });
 });
+
+describe('getProjects', () => {
+  const mockProjects = [
+    {
+      id: 1,
+      name: 'a project'
+    },
+    {
+      id: 2,
+      name: 'another project'
+    }
+  ]
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockProjects)
+      })
+    }) 
+  })
+  it('should call fetch with the correct URL', () => {
+    const expected = 'https://color-picker-backend.herokuapp.com/api/v1/projects'
+  
+    api.getProjects()
+  
+    expect(window.fetch).toHaveBeenCalledWith(expected)
+  })
+
+  it('should return an array of projects', () => {
+    const result = api.getProjects()
+
+    expect(result).resolves.toEqual(mockProjects)
+  })
+
+  it('should return an error if the fetch is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({ ok: false })
+    })
+
+    const result = api.getProjects()
+
+    expect(result).rejects.toEqual(Error('Failed to fetch projects'))
+  })
+
+  it('should return an error if the promise rejects', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('Failed to fetch'))
+    })
+
+    const result = api.getProjects()
+    expect(result).rejects.toEqual(Error('Failed to fetch'))
+  })
+})
+
+describe('getProject', () => {
+  const mockProject = {
+    id: 1,
+    name: 'rainbows and butterflies'
+  }
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockProject)
+      })
+    })
+  })
+
+  it('should call fetch with the correct URL', () => {
+    const expectedUrl = 'https://color-picker-backend.herokuapp.com/api/v1/projects/1'
+
+    api.getProject(1)
+
+    expect(window.fetch).toHaveBeenCalledWith(expectedUrl)
+  })
+
+  it('should return a project with the correct id', () => {
+    const result = api.getProject(1)
+
+    expect(result).resolves.toEqual(mockProject)
+  })
+
+  it('should should return an error if the fetch fails', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({ ok: false })
+    })
+
+    const result = api.getProject(1)
+
+    expect(result).rejects.toEqual(Error('Failed to fetch project'))
+  })
+
+  it('should return an error if the promise rejects', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('Failed to fetch'))
+    })
+
+    const result = api.getProject(1)
+
+    expect(result).rejects.toEqual(Error('Failed to fetch'))
+  })
+
+})
+
+describe('postProject', () => {
+  const mockProject = {name: 'hi this is a project'}
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve('Successfully added project')
+      })
+    })
+  })
+
+  it('should be called with the correct url and body', () => {
+    const { name } = mockProject
+
+    const expectedUrl = 'https://color-picker-backend.herokuapp.com/api/v1/projects'
+
+    const expectedBody = {
+      "body": "{\"name\":\"hi this is a project\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "POST"
+    }
+
+    api.postProject(name)
+
+    expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedBody)
+  })
+
+  it('should return a message indicating that the project was added successfully if the post is ok', () => {
+    const result = api.postProject(mockProject)
+
+    expect(result).resolves.toEqual('Successfully added project')
+  })
+
+  it('should return an error if the post is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({ok: false})
+    })
+    const result = api.postProject(mockProject)
+    expect(result).rejects.toEqual(Error('Failed to post new project'))
+  })
+
+  it('should return an error if the fetch fails', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('Failed to post'))
+    })
+
+    const result = api.postProject(mockProject)
+
+    expect(result).rejects.toEqual(Error('Failed to post'))
+  })
+})
+
+
+describe('deleteProject', () => {
+  const mockProject = {id: 1, name: 'a project'}
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve('Successfully deleted project')
+      })
+    })
+  })
+
+  it('should be called with the correct URL', () => {
+    const { id } = mockProject
+    const expectedUrl = `https://color-picker-backend.herokuapp.com/api/v1/projects/1`
+
+    const expectedBody = {method: 'DELETE'}
+
+    api.deleteProject(id)
+
+    expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedBody)
+  })
+
+  it('should return a success message if the delete succeeds', () => {
+    const result = api.deleteProject(1)
+    expect(result).resolves.toEqual('Successfully deleted project')
+  })
+
+  it('should return an error if the repsonse is not ok', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({ ok: false })
+    })
+    const result = api.deleteProject(1)
+    expect(result).rejects.toEqual(Error('Failed to delete project'))
+  })
+
+  it('should return an error if the fetch fails', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('fetch failed'))
+    })
+    const result = api.deleteProject(1)
+
+    expect(result).rejects.toEqual(Error('fetch failed'))
+  })
+})
