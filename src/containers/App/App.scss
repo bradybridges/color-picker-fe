@@ -17,6 +17,9 @@
   border-radius: 3px 3px 3px 3px;
   font-family: 'Permanent Marker';
   border: 1px solid grey;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .main-header {

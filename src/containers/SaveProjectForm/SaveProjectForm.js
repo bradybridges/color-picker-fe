@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { addNewProject } from '../../actions/index'
-import './SaveProjectForm.css'
+import './SaveProjectForm.scss'
 
 export class SaveProjectForm extends Component {
   constructor() {

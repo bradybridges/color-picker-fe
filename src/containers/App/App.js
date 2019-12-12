@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './App.css';
+import './App.scss';
 import * as api from '../../apiCalls';
 import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
@@ -30,6 +30,7 @@ export class App extends Component {
     this.props.setProjects(projects);
     this.props.setPalettes(palettes);
     this.setState({ isLoading: false });
+    this.generatePalette();
   }
 
   generatePalette = () => {

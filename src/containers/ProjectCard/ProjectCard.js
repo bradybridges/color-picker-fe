@@ -43,6 +43,7 @@ export class ProjectCard extends Component {
   }
   handleDeleteProject = (e) => {
     e.preventDefault();
+    this.setState({ showModal: false });
     const { id, projects, palettes } = this.props;
     deleteProject(id);
     this.updateProjects(id, projects);

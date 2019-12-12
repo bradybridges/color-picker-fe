@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Palette.css';
+import './Palette.scss';
 import { connect } from 'react-redux';
 import { addPalettes, setTempPalette } from '../../actions/index';
 import { deletePalette } from '../../apiCalls';
