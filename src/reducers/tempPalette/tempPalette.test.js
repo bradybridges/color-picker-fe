@@ -1,4 +1,4 @@
-import { tempPalette } from './tempPalette'
+import { tempPalette } from './tempPalette';
 
 describe('tempPalette', () => {
   it('should return the initial state', () => {
@@ -10,12 +10,12 @@ describe('tempPalette', () => {
       { name: 'color_5', color: '#FFFFFF', isLocked: false },
     ];
 
-    const expected = initialState
+    const expected = initialState;
 
-    const result = tempPalette(undefined, {})
+    const result = tempPalette(undefined, {});
 
-    expect(result).toEqual(expected)
-  })
+    expect(result).toEqual(expected);
+  });
 
   it('should update state with a new palette', () => {
     const initialState = [
@@ -36,13 +36,13 @@ describe('tempPalette', () => {
 
     const mockSetTempPalette = {
       type: 'SET_TEMP_PALETTE',
-      palette: newPalette
-    }
+      palette: newPalette,
+    };
 
-    const expected = newPalette
+    const expected = newPalette;
 
-    const result = tempPalette(initialState, mockSetTempPalette)
+    const result = tempPalette(initialState, mockSetTempPalette);
 
-    expect(result).toEqual(expected)
-  })
-})
+    expect(result).toEqual(expected);
+  });
+});

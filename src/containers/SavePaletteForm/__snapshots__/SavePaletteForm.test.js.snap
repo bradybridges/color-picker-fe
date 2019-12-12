@@ -32,6 +32,7 @@ exports[`SavePaletteForm should match snapshot 1`] = `
     />
     <button
       className="palette-save-btn"
+      type="submit"
     >
       Save Palette
     </button>

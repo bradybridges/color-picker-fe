@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PaletteColorItem from '../PaletteColorItem/PaletteColorItem';
-import './PaletteContainer.css'
+import './PaletteContainer.css';
 
 export class PaletteContainer extends Component {
   renderColorItems = () => {
@@ -14,7 +14,7 @@ export class PaletteContainer extends Component {
 
   render() {
     return (
-      <section className='palette-container'>
+      <section className="palette-container">
         {this.renderColorItems()}
       </section>
     );

@@ -21,7 +21,7 @@ export class ProjectCard extends Component {
         <Palette
           {...palette}
           key={`${palette.id}${index}`}
-          className='palette-card'
+          className="palette-card"
         />
       );
     })
@@ -64,9 +64,9 @@ export class ProjectCard extends Component {
   render() {
     const { name } = this.props;
     return (
-      <section className='project-card'>
+      <section className="project-card">
         <div className="project-title-container">
-          <h4 className='project-name'>{name}</h4>
+          <h4 className="project-name">{name}</h4>
           <button
             className="project-button"
             type="button"
@@ -84,7 +84,7 @@ export class ProjectCard extends Component {
 
 export const mapState = (state) => ({
   palettes: state.palettes,
-  projects: state.projects
+  projects: state.projects,
 });
 
 export const mapDispatch = (dispatch) => ({

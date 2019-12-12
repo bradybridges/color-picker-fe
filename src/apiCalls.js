@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 // console.log(process.env.REACT_APP_BACKEND)
 
 export const getProjects = async () => {

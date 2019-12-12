@@ -35,12 +35,12 @@ describe('PaletteColorItem', () => {
   const mockSetTempPalette = jest.fn();
   beforeEach(() => {
     wrapper = shallow(<PaletteColorItem
-      color='#CCCCCC'
+      color="#CCCCCC"
       isLocked={true}
       tempPalette={mockTemp}
       setTempPalette={mockSetTempPalette}
     />);
-  })
+  });
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });

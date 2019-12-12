@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setTempPalette } from '../../actions/index';
-import './PaletteColorItem.scss'
+import './PaletteColorItem.scss';
 
 const lockedImg = require('../../images/lock.svg');
 const unlockedImg = require('../../images/unlocked-padlock.svg');
@@ -23,12 +23,12 @@ export class PaletteColorItem extends Component {
   render() {
     const { color, isLocked } = this.props;
     const lockImg = isLocked ? lockedImg : unlockedImg;
-    const style = { backgroundColor: color }
+    const style = { backgroundColor: color };
     return (
-      <section style={style} className='color-container' onClick={this.handleToggleColorLock} >
-        <div className='color-container-contents'>
-          <p className='color-code'>{color}</p>
-          <img src={lockImg} className='color-lock-img' alt="lock or unlock color" />
+      <section style={style} className="color-container" onClick={this.handleToggleColorLock}>
+        <div className="color-container-contents">
+          <p className="color-code">{color}</p>
+          <img src={lockImg} className="color-lock-img" alt="lock or unlock color" />
         </div>
       </section>
     );
