@@ -25,6 +25,7 @@
   height: 35px;
   border-color: #2d9fcc;
   &:hover {
+    box-shadow: 3px -3px 6px 0px #2d9fcc;
     cursor: pointer;
   }
 }

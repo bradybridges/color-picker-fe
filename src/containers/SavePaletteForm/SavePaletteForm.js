@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPalette } from '../../actions/index';
-import './SavePaletteForm.scss'
+import './SavePaletteForm.scss';
 
 export class SavePaletteForm extends Component {
   constructor() {
     super();
     this.state = {
-      selectedProject: "1",
+      selectedProject: '1',
       paletteName: '',
-    }
+    };
   }
 
   handleOptionChange = (e) => {
     this.setState({
-      selectedProject: e.target.value
+      selectedProject: e.target.value,
     })
   }
 
@@ -53,10 +53,10 @@ export class SavePaletteForm extends Component {
     const color5 = tempPalette[4].color;
     const response = await this.props.savePalette(projectId, paletteName, color1, color2, color3, color4, color5);
     const paletteId = await response.id;
-    const newPalette = { 
+    const newPalette = {
       id: paletteId,
-      project_id: projectId, 
-      palette_name: paletteName, 
+      project_id: projectId,
+      palette_name: paletteName,
       color_1: color1,
       color_2: color2,
       color_3: color3,
@@ -69,17 +69,17 @@ export class SavePaletteForm extends Component {
 
   render() {
     return (
-      <div className='form-container'>
-      <form className='palette-form' onSubmit={this.handleSubmit}>
-        {this.renderProjectOptions()}
-        <input 
-          className='palette-title-input' 
-          placeholder="Enter Palette Name" 
-          onChange={this.handleInputChange}
-          value={this.state.paletteName} 
-        />
-        <button className='palette-save-btn'>Save Palette</button>
-      </form>
+      <div className="form-container">
+        <form className="palette-form" onSubmit={this.handleSubmit}>
+          {this.renderProjectOptions()}
+          <input
+            className="palette-title-input"
+            placeholder="Enter Palette Name"
+            onChange={this.handleInputChange}
+            value={this.state.paletteName}
+          />
+          <button type="submit" className='palette-save-btn'>Save Palette</button>
+        </form>
       </div>
     );
   }

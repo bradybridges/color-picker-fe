@@ -1,6 +1,6 @@
-import { ProjectContainer, mapState } from './ProjectContainer'
-import { shallow } from 'enzyme'
-import React from 'react'
+import { ProjectContainer, mapState } from './ProjectContainer';
+import { shallow } from 'enzyme';
+import React from 'react';
 
 describe('ProjectContainer', () => {
   describe('ProjectContainer component', () => {
@@ -9,21 +9,21 @@ describe('ProjectContainer', () => {
       const mockProjects = [
         {
           id: 1,
-          name: 'a project'
-        }, 
+          name: 'a project',
+        },
         {
           id: 2,
-          name: 'another project'
-        }
-      ]
+          name: 'another project',
+        },
+      ];
 
-      wrapper = shallow(<ProjectContainer projects={mockProjects}/>)
-    })
+      wrapper = shallow(<ProjectContainer projects={mockProjects} />);
+    });
 
     it('should match the snapshot', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
-  })
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
 
   describe('mapState', () => {
     it('should return an object with the projects array', () => {
@@ -31,12 +31,12 @@ describe('ProjectContainer', () => {
         projects: [
           {
             id: 1,
-            name: 'a project'
-          }, 
+            name: 'a project',
+          },
           {
             id: 2,
-            name: 'another project'
-          }
+            name: 'another project',
+          },
         ],
         palettes: [
           {
@@ -48,25 +48,25 @@ describe('ProjectContainer', () => {
             color_3: '#FFFFFF',
             color_4: '#FFFFFF',
             color_5: '#FFFFFF',
-          }
-        ]
-      }
-        const expectedState = {
-          projects: [
-            {
-              id: 1,
-              name: 'a project'
-            }, 
-            {
-              id: 2,
-              name: 'another project'
-            }
-          ]
-        }
+          },
+        ],
+      };
+      const expectedState = {
+        projects: [
+          {
+            id: 1,
+            name: 'a project',
+          },
+          {
+            id: 2,
+            name: 'another project',
+          },
+        ],
+      };
 
-        const mappedProps = mapState(mockState)
+      const mappedProps = mapState(mockState);
 
-        expect(mappedProps).toEqual(expectedState)
-      })
-    })
-  })
+      expect(mappedProps).toEqual(expectedState);
+    });
+  });
+});

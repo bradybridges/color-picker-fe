@@ -75,7 +75,7 @@ describe('SavePaletteForm', () => {
   });
   it('resetForm should reset state', () => {
     const alteredState = { selectedProject: 20, paletteName: 'Test' };
-    const expectedState = { selectedProject: 1, paletteName: '' };
+    const expectedState = { selectedProject: 20, paletteName: '' };
     wrapper.setState({ selectedProject: 20, paletteName: 'Test' });
     expect(wrapper.state()).toEqual(alteredState);
     wrapper.instance().resetForm();
@@ -167,12 +167,12 @@ describe('mapDispatch', () => {
     const mockPalette = {
       id: 1,
       project_id: 1,
-      palette_name: "super dope palette",
-      color_1: "#000000",
-      color_2: "#ffffff",
-      color_3: "#1e1e1e",
-      color_4: "#1f1f1f",
-      color_5: "#1d1d1d",
+      palette_name: 'super dope palette',
+      color_1: '#000000',
+      color_2: '#ffffff',
+      color_3: '#1e1e1e',
+      color_4: '#1f1f1f',
+      color_5: '#1d1d1d',
     };
     const actionToDispatch = addPalette(mockPalette);
     const mappedDispatch = mapDispatch(mockDispatch);

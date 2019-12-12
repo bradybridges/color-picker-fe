@@ -1,4 +1,4 @@
-import * as actions from '../actions/index';
+import * as actions from './index';
 
 describe('addProjects', () => {
   it('should return the correct action object', () => {
