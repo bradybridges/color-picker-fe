@@ -7,6 +7,8 @@ View the live page [here.](https://color-picker-fe.herokuapp.com/)
 * [Requirements](#Requirements)
 * [Setup](#Setup)
 * [Screenshots](#Screenshots)
+* [Design Inspiration](#Design-Inspiration)
+* [Project Board](#Project-Board)
 
 ## Objective
 
@@ -45,7 +47,7 @@ npm install
 1. To verify that it is setup correctly, run `npm start` in your terminal. The page should open on your browser.
 
 ## Screenshots
-![GIF]()
+![GIF](https://github.com/color-coordinated/color-picker-fe/blob/master/src/images/Color-Picker-Demo.gif)
 
 ## Design Inspiration
 
