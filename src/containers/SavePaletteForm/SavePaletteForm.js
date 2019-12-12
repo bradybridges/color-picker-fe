@@ -8,7 +8,7 @@ export class SavePaletteForm extends Component {
   constructor() {
     super();
     this.state = {
-      selectedProject: '1',
+      selectedProject: '',
       paletteName: '',
     };
   }
@@ -31,6 +31,12 @@ export class SavePaletteForm extends Component {
   }
 
   renderProjectOptions = () => {
+    const { projects } = this.props;
+    const firstId = projects.length ? String(projects[0].id): null;
+    const selectedId = this.state.selectedProject;
+    if(projects.length === 1 && firstId !== selectedId) {
+      this.setState({ selectedProject: `${firstId}`});
+    }
     const options = this.props.projects.map((project) => {
       return <option key={`${project.name}`} value={project.id}>{project.name}</option>
     });

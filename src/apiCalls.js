@@ -1,5 +1,4 @@
 require('dotenv').config();
-// console.log(process.env.REACT_APP_BACKEND)
 
 export const getProjects = async () => {
   const response = await fetch(process.env.REACT_APP_BACKEND +'/api/v1/projects');
