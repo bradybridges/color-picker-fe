@@ -46,3 +46,10 @@ npm install
 
 ## Screenshots
 ![GIF]()
+
+## Design Inspiration
+
+We had a couple of sources of design inspiration for this project. The can be found [here](https://dribbble.com/shots/8971108-Biometrics-DD-Animation-Series). We liked how a simple black background can really make colors pop, which is necessary for an effective palette-making tool. Second, we were lightly inspired by [this](https://dribbble.com/shots/6437017-Shift-Dashboard-Dark-Mode) and [this](https://dribbble.com/shots/8956943-National-Park-Icons). One of the pain points with making a palette generating application is that there's already a myriad available but all with very similar UIs, so we wanted something slightly different than the standard square color, hence the circles.
+
+## Project Board
+[GH Projects Board Can Be Found Here](https://github.com/orgs/color-coordinated/projects/1)
