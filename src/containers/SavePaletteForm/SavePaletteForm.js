@@ -30,13 +30,17 @@ export class SavePaletteForm extends Component {
     this.setState({ paletteName: '' });
   }
 
-  renderProjectOptions = () => {
+  detectLastProjectMismatch = () => {
     const { projects } = this.props;
     const firstId = projects.length ? String(projects[0].id): null;
     const selectedId = this.state.selectedProject;
     if(projects.length === 1 && firstId !== selectedId) {
       this.setState({ selectedProject: `${firstId}`});
     }
+  }
+
+  renderProjectOptions = () => {
+    this.detectLastProjectMismatch();
     const options = this.props.projects.map((project) => {
       return <option key={`${project.name}`} value={project.id}>{project.name}</option>
     });
